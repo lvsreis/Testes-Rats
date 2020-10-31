@@ -1,0 +1,4 @@
+module func;
+
+public void prog = [a-z]*' '*[a-z]*" ""{"'\n'* [a-z]*";"'\n'* [a-z]*";"'\n'*"}"; 
+
