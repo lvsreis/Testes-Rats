@@ -1,4 +1,4 @@
-int main () {
-int
- x;
-int y;}
+int main {
+sdfghj;
+dfghj;
+};

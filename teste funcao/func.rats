@@ -1,4 +1,9 @@
 module func;
 
-public void prog = [a-z]*' '*[a-z]*" ""{"'\n'* [a-z]*";"'\n'* [a-z]*";"'\n'*"}"; 
+public void prog = [a-z]* W [a-z]* W "{" W [a-z]* ';' W [a-z]* ";" W "}"; 
+
+//public void prog = [a-z]+ W "{" "}" W ; 
+
+public void W = (" " / "\r" / "\n" / "\t" )+ ;
+
 
