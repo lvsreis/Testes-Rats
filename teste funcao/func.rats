@@ -11,14 +11,17 @@ public void nome = [a-zA-Z]+;
 
 
 public void tipos = ("int" W int W) 
-				  / ("char" W char W) 
 				  / ("double" W deci W) 
-				  / ("float"  W deci W);
+				  / ("float"  W deci W)
+				  / ("char" W char W)
+				  /("string" W string W);
 				  
 
 public void deci = nome W* "=" W* [0-9]+ "." [0-9]+ W* ";" ;  
 
-public void int = nome W* "=" W* [0-9]+ W* ";" ;
+public void int = nome W* "=" W* [0-9]+  W* ";" ;
 
-public void char = nome W* "=" W* """ ([a-zA-Z]/[0-9]) """ W ";" ;
+public void char = nome W* "=" W* "'" [a-zA-Z] "'" W* ";" ;
+
+public void string = nome W* "=" W* '"' [a-zA-Z0-9]+ '"' W* ";" ;
 
