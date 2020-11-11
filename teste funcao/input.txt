@@ -1,4 +1,5 @@
-int main {
-sdfghj;
-dfghj;
-};
+int main ()
+{
+ int ze=123	;
+
+}
