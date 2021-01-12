@@ -2,37 +2,46 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.io.*;
+import java.util.Queue;
 
 public class ListFiles {
 
-    public static void main(String args[]) {
+	public static void main(String args[]) 
+	{
+		Queue q;
+		q = new LinkedList();
+		File f = new File(args[0]);
+		File inst[];
+		q.add(f);
 
-	File f = new File(args[0]);
-	File inst[];
+		try {
+			do{
+				f= q.remove();
+				if(f.isDirectory()) {
+					String pth;
+					inst = f.listFiles();
+					for(int i = 0; i < inst.length; i++) {
+						pth = inst[i].getPath();
+						if(inst[i].isDirectory())
+						{
+							q.add(inst[i]);
+						}
+						else
+						{
+							System.out.println(pth);
+						}
+					}
 
-	try {
-	    if(f.isDirectory()) {
-		String pth;
-		inst = f.listFiles();
-		for(int i = 0; i < inst.length; i++) {
-		    pth = inst[i].getPath();
-		    if(inst[i].isDirectory())
-		    {
-		    	System.out.println("Entrei aqui\n");
-		    }
+				} else {
+					System.out.println(f.getPath());
+				}
 
-		    else
-		    {
-		    	System.out.println(pth);
-		    }
+			}while(q.size() > 0)
+
+
+		} catch(Exception e) {
+			System.out.println("Deu merda " + e.getMessage());
 		}
-	    } else {
-		System.out.println(f.getPath());
-	    }
-
-	} catch(Exception e) {
-	    System.out.println("Deu merda " + e.getMessage());
 	}
-    }
 }
-
+// tempo e .java stringbegin(string.length-5)
