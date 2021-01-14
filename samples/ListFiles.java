@@ -8,7 +8,7 @@ public class ListFiles {
 
 	public static void main(String args[]) 
 	{
-		Queue q;
+		Queue<File> q;
 		q = new LinkedList();
 		File f = new File(args[0]);
 		File inst[];
@@ -16,7 +16,7 @@ public class ListFiles {
 
 		try {
 			do{
-				f= q.remove();
+				f= q.remove();	
 				if(f.isDirectory()) {
 					String pth;
 					inst = f.listFiles();
@@ -27,7 +27,10 @@ public class ListFiles {
 							q.add(inst[i]);
 						}
 						else
-						{
+						{ 
+							//if(( pth.stringBegin(pth.length()-5)) == ".java")
+							//if( pth.endsWith(".java"))
+								 if(pth.startsWith(".java",pth.length()-5))
 							System.out.println(pth);
 						}
 					}
@@ -36,7 +39,7 @@ public class ListFiles {
 					System.out.println(f.getPath());
 				}
 
-			}while(q.size() > 0)
+			}while(q.size() > 0);
 
 
 		} catch(Exception e) {
