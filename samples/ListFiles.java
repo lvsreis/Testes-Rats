@@ -3,9 +3,12 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.io.*;
 import java.util.Queue;
+import java.io.FileReader;
+import xtc.parser.Result;
+
 
 public class ListFiles {
-
+	
 	public static void main(String args[]) 
 	{
 		Queue<File> q;
@@ -13,6 +16,10 @@ public class ListFiles {
 		File f = new File(args[0]);
 		File inst[];
 		q.add(f);
+
+		long beginTime , endTime;
+		Result r;
+		FileReader file;
 
 		try {
 			do{
@@ -27,11 +34,22 @@ public class ListFiles {
 							q.add(inst[i]);
 						}
 						else
-						{ 
-							//if(( pth.stringBegin(pth.length()-5)) == ".java")
-							//if( pth.endsWith(".java"))
-								 if(pth.startsWith(".java",pth.length()-5))
-							System.out.println(pth);
+						{ 	
+							if(pth.startsWith(".java",pth.length()-5))
+							{
+								System.out.print(pth + "\t");
+								file = new FileReader(pth);
+								func parser = new func(file, pth );
+								beginTime = System.currentTimeMillis();
+								r = parser.pprog(0);
+								endTime = System.currentTimeMillis();
+								System.out.println("Time in millis: " + (endTime - beginTime));
+								if(!(r instanceof xtc.parser.ParseError))
+									System.out.println("OK");
+								else
+									System.out.println("NOT OK");
+							}
+							
 						}
 					}
 
@@ -47,4 +65,3 @@ public class ListFiles {
 		}
 	}
 }
-// tempo e .java stringbegin(string.length-5)
