@@ -1,0 +1,8 @@
+java -cp .;rats.jar ListFiles C:\Users\deive\Documents\GitHub\Testes-Rats\samples
+Caminho;Tempo(Ms);Resultado
+C:\Users\deive\Documents\GitHub\Testes-Rats\samples\Carro.java;0;NOT OK
+C:\Users\deive\Documents\GitHub\Testes-Rats\samples\func.java;0;NOT OK
+C:\Users\deive\Documents\GitHub\Testes-Rats\samples\javarats.java;1;NOT OK
+C:\Users\deive\Documents\GitHub\Testes-Rats\samples\ListFiles.java;0;NOT OK
+C:\Users\deive\Documents\GitHub\Testes-Rats\samples\Main.java;0;NOT OK
+C:\Users\deive\Documents\GitHub\Testes-Rats\samples\TestParser.java;0;NOT OK

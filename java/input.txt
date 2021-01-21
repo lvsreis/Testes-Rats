@@ -1,0 +1,10 @@
+int main ()
+{
+ int ze =123 ;
+ float ze =0.0 ;
+ double ze = 0.0 ;
+ char ze = 's' ;
+ string ze = "asd4567fghjk4";
+
+
+}

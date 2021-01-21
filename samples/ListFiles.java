@@ -15,13 +15,14 @@ public class ListFiles {
 		q = new LinkedList();
 		File f = new File(args[0]);
 		File inst[];
-		q.add(f);
+		q.add(f); 
 
 		long beginTime , endTime;
 		Result r;
 		FileReader file;
 
 		try {
+			System.out.println("Caminho;Tempo(Ms);Resultado");
 			do{
 				f= q.remove();	
 				if(f.isDirectory()) {
@@ -37,17 +38,17 @@ public class ListFiles {
 						{ 	
 							if(pth.startsWith(".java",pth.length()-5))
 							{
-								System.out.print(pth + "\t");
+								System.out.print(pth + ";");
 								file = new FileReader(pth);
-								func parser = new func(file, pth );
+								javarats parser = new javarats(file, pth);
 								beginTime = System.currentTimeMillis();
-								r = parser.pprog(0);
+								r = parser.pcompilation_unit(0);
 								endTime = System.currentTimeMillis();
-								System.out.println("Time in millis: " + (endTime - beginTime));
+								System.out.print((endTime - beginTime)+";");
 								if(!(r instanceof xtc.parser.ParseError))
 									System.out.println("OK");
 								else
-									System.out.println("NOT OK");
+									System.out.println("          NOT OK");
 							}
 							
 						}
@@ -62,6 +63,7 @@ public class ListFiles {
 
 		} catch(Exception e) {
 			System.out.println("Deu merda " + e.getMessage());
+			e.printStackTrace();
 		}
 	}
 }

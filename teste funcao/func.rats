@@ -24,4 +24,3 @@ public void int = nome W* "=" W* [0-9]+  W* ";" ;
 public void char = nome W* "=" W* "'" [a-zA-Z] "'" W* ";" ;
 
 public void string = nome W* "=" W* '"' [a-zA-Z0-9]+ '"' W* ";" ;
-

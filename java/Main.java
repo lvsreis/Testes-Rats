@@ -5,7 +5,7 @@ import xtc.parser.Result;
 public class Main {
 
     public static void main(String args[]) throws Exception {
-        FileReader file = new FileReader(args[0]);
+        FileReader file = new FileReader("Main.java");
         javarats parser = new javarats(file, "input");
 	long beginTime = System.currentTimeMillis();
         Result r = parser.pcompilation_unit(0);
