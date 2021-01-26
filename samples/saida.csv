@@ -1,0 +1,3 @@
+java -cp .;rats.jar ListFiles C:\Users\pedro\Documents\Testes-Rats\samples\instanciasJava\SimuladorMIPSSuperEscalar-master
+Caminho;Tempo(Ms);Resultado
+Total; 328

@@ -11,6 +11,7 @@ public class ListFiles {
 	
 	public static void main(String args[]) 
 	{
+		long soma = 0;
 		Queue<File> q;
 		q = new LinkedList();
 		File f = new File(args[0]);
@@ -38,17 +39,18 @@ public class ListFiles {
 						{ 	
 							if(pth.startsWith(".java",pth.length()-5))
 							{
-								System.out.print(pth + ";");
+								//System.out.print(pth + ";");
 								file = new FileReader(pth);
 								javarats parser = new javarats(file, pth);
 								beginTime = System.currentTimeMillis();
 								r = parser.pcompilation_unit(0);
 								endTime = System.currentTimeMillis();
-								System.out.print((endTime - beginTime)+";");
-								if(!(r instanceof xtc.parser.ParseError))
+								soma += (endTime - beginTime);
+								//System.out.print((endTime - beginTime)+";");
+								/*if(!(r instanceof xtc.parser.ParseError))
 									System.out.println("OK");
 								else
-									System.out.println("          NOT OK");
+									System.out.println("          NOT OK");*/
 							}
 							
 						}
@@ -59,6 +61,8 @@ public class ListFiles {
 				}
 
 			}while(q.size() > 0);
+
+			System.out.println("Total; " + soma);
 
 
 		} catch(Exception e) {

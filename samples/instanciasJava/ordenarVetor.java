@@ -1,3 +1,5 @@
+public class ordenarVetor{
+
 public static void main(String[] args) throws IOException {
 
     int quantidade = 10000;
@@ -31,4 +33,5 @@ public static void insertionSort(int[] vetor) {
        }
         vetor[i + 1] = key;
     }
+}
 }
