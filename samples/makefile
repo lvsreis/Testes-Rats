@@ -1,7 +1,7 @@
 all: ListFiles.class
 
 ListFiles.class: ListFiles.java
-	javac -cp .;rats.jar ListFiles.java
+	javac -cp .;rats.jar ListFilesFuncoes.java
 
 clean: 
 	del /S *.class
@@ -9,4 +9,4 @@ clean:
 DIR=""
 
 run: ListFiles.class
-	java -cp .;rats.jar ListFiles $(DIR)
+	java -cp .;rats.jar ListFilesFuncoes $(DIR)

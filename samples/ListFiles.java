@@ -11,7 +11,7 @@ public class ListFiles {
 	
 	public static void main(String args[]) 
 	{
-		long soma = 0, total=0;
+		long soma = 0;
 		Queue<File> q;
 		q = new LinkedList();
 		File f = new File(args[0]);
@@ -50,29 +50,24 @@ public class ListFiles {
 								endTime = System.currentTimeMillis();
 								soma += (endTime - beginTime);
 
-								}
-								System.out.print(((float)soma/30)+"; \n");
-								
-								total+=soma;
+								System.out.print((endTime - beginTime) + "; \n");
 
-								soma=0;
-								
+								}
+								//System.out.print("\n");
 								/*if(!(r instanceof xtc.parser.ParseError))
 									System.out.println("OK");
 								else
 									System.out.println("          NOT OK");*/
-							}
-							
+							}							
 						}
 					}
-
 				} else {
 					System.out.println(f.getPath());
 				}
 
 			}while(q.size() > 0);
 
-			System.out.println("Total; " + (total/30));
+			System.out.println("Total; " + soma );
 
 
 		} catch(Exception e) {
@@ -80,5 +75,4 @@ public class ListFiles {
 			e.printStackTrace();
 		}
 	}
-}
-	
+}	
