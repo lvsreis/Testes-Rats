@@ -5,27 +5,38 @@ import java.io.*;
 import java.util.Queue;
 import java.io.FileReader;
 import xtc.parser.Result;
+import java.util.Scanner;
+import java.util.Collections;
 
 
 public class ListFilesFuncoes {
 
-	static public void Executar(List<File> lista)throws IOException
+	static public void Executar(List<File> lista, int medicoes)throws IOException
 	{
 
-		long beginTime , endTime;
+		long beginTime , endTime, beginTimeMedicao, endTimeMedicao;
 		Result r;
 		FileReader file;
 		String pth;
 
-		for(int i = 0; i < lista.size(); i++)
+		for(int j = 0; j < medicoes; j++)
 		{
-			pth = (lista.get(i)).getPath();
-			file = new FileReader(pth);
-			javarats parser = new javarats(file, pth);
-			beginTime = System.currentTimeMillis();
-			r = parser.pcompilation_unit(0);
-			endTime = System.currentTimeMillis();
-			System.out.print(pth+";"+(endTime - beginTime) + "; \n");
+			beginTimeMedicao = System.currentTimeMillis();
+			Collections.shuffle(lista);
+			for(int i = 0; i < lista.size(); i++)
+			{
+				pth = (lista.get(i)).getPath();
+				file = new FileReader(pth);
+				javarats parser = new javarats(file, pth);
+				beginTime = System.currentTimeMillis();
+				r = parser.pcompilation_unit(0);
+				endTime = System.currentTimeMillis();
+				System.out.print(pth+";"+(endTime - beginTime) + "; \n");
+			}
+			System.out.println("\n \n \n \n \n");
+			endTimeMedicao = System.currentTimeMillis();
+			System.out.print("Tempo de medicao " + (j + 1) + ": " + (endTimeMedicao - beginTimeMedicao) + "; \n");
+
 		}
 	}
 
@@ -51,7 +62,7 @@ public class ListFilesFuncoes {
 //fazer um loop
 			while(!q.isEmpty()) {
 			//	String pth;
-				f=q.remove();
+				f = q.remove();
 				inst = f.listFiles();
 				for(int i = 0; i < inst.length; i++) {
 
@@ -77,11 +88,13 @@ public class ListFilesFuncoes {
 		return lista;
 	}
 
-
-
 	public static void main(String[] args) throws IOException{
-		Executar(coletarArquivos(args[0]));
+		Scanner teclado = new Scanner(System.in);
+		
+		System.out.println("Digite um numero de medicoes a serem feitas: ");
+		int medicoes = teclado.nextInt();
 
+		Executar(coletarArquivos(args[0]), medicoes);
 	}
 
 }
