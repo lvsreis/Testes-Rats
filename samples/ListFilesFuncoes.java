@@ -1,3 +1,4 @@
+package samples;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -11,16 +12,14 @@ import java.util.Collections;
 
 public class ListFilesFuncoes {
 
-	static public void Executar(List<File> lista, int medicoes)throws IOException
+	static public void Executar(List<File> lista)throws IOException
 	{
 
 		long beginTime , endTime, beginTimeMedicao, endTimeMedicao;
 		Result r;
 		FileReader file;
 		String pth;
-
-		for(int j = 0; j < medicoes; j++)
-		{
+		
 			beginTimeMedicao = System.currentTimeMillis();
 			Collections.shuffle(lista);
 			for(int i = 0; i < lista.size(); i++)
@@ -37,7 +36,7 @@ public class ListFilesFuncoes {
 			endTimeMedicao = System.currentTimeMillis();
 			System.out.print("Tempo de medicao " + (j + 1) + ": " + (endTimeMedicao - beginTimeMedicao) + "; \n");
 
-		}
+		
 	}
 
 	static public List coletarArquivos(String endereco)
@@ -88,13 +87,13 @@ public class ListFilesFuncoes {
 		return lista;
 	}
 
-	public static void main(String[] args) throws IOException{
-		Scanner teclado = new Scanner(System.in);
+		ListFilesFuncoes(String args) throws IOException{
+		/*Scanner teclado = new Scanner(System.in);
 		
-		System.out.println("Digite um numero de medicoes a serem feitas: ");
-		int medicoes = teclado.nextInt();
+		System.out.println("Digite o numero de medicoes a serem feitas: ");
+		int medicoes = teclado.nextInt();*/
 
-		Executar(coletarArquivos(args[0]), medicoes);
+		Executar(coletarArquivos(args));
 	}
 
 }
