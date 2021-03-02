@@ -1,4 +1,4 @@
-package samples;
+//package samples;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -12,15 +12,17 @@ import java.util.Collections;
 
 public class ListFilesFuncoes {
 
-	static public void Executar(List<File> lista)throws IOException
+	List<File> lista;
+
+	 public long Executar()throws IOException
 	{
 
-		long beginTime , endTime, beginTimeMedicao, endTimeMedicao;
+		long beginTime , endTime, auxTimeMedicao = 0;
 		Result r;
 		FileReader file;
 		String pth;
+		int j = 0;
 		
-			beginTimeMedicao = System.currentTimeMillis();
 			Collections.shuffle(lista);
 			for(int i = 0; i < lista.size(); i++)
 			{
@@ -30,18 +32,18 @@ public class ListFilesFuncoes {
 				beginTime = System.currentTimeMillis();
 				r = parser.pcompilation_unit(0);
 				endTime = System.currentTimeMillis();
-				System.out.print(pth+";"+(endTime - beginTime) + "; \n");
+				auxTimeMedicao += (endTime - beginTime);
+				//System.out.print(pth+";"+(endTime - beginTime) + "; \n");
 			}
-			System.out.println("\n \n \n \n \n");
-			endTimeMedicao = System.currentTimeMillis();
-			System.out.print("Tempo de medicao " + (j + 1) + ": " + (endTimeMedicao - beginTimeMedicao) + "; \n");
+			//System.out.println("\n \n \n \n \n");	
+			//System.out.print("Tempo de medicao " + (auxTimeMedicao) + "; \n");
 
-		
+			return auxTimeMedicao;	
 	}
 
-	static public List coletarArquivos(String endereco)
+	 private List coletarArquivos(String endereco)
 	{
-		List<File> lista = new LinkedList(); 
+		 
 		File f = new File(endereco);
 		File inst[];
 		
@@ -88,12 +90,10 @@ public class ListFilesFuncoes {
 	}
 
 		ListFilesFuncoes(String args) throws IOException{
-		/*Scanner teclado = new Scanner(System.in);
+		 
+		lista = new LinkedList();
 		
-		System.out.println("Digite o numero de medicoes a serem feitas: ");
-		int medicoes = teclado.nextInt();*/
-
-		Executar(coletarArquivos(args));
+		coletarArquivos(args);
 	}
 
 }
