@@ -13,7 +13,7 @@ for line in dataset:
 
 dataset.close()
 
-plt.plot(x, y)
+plt.plot(x, y, c='r', marker='.')
 
 plt.title('Tempo de Execução')
 plt.xlabel('Nome arquivo')
