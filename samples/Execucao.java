@@ -19,13 +19,15 @@ public class Execucao {
 		ListFilesFuncoes a;
 		List<File> lista = new LinkedList();
 		File f = new File(args[0]);
-
-		File func = new File("saida.csv");
-		func.delete();
-		func = new File("saida.csv");
-		String dados, path = func.getPath();
-
+		
 		String Fname;
+		File func = new File("saida.csv");
+		if (func.exists()) {
+			func.delete();
+			func = new File("saida.csv");
+		}
+		String dados, path = func.getPath();
+		
 
 		File[] vet = f.listFiles();
 
@@ -45,8 +47,8 @@ public class Execucao {
 			for (File file : lista) {
 
 				String aux = file.getPath();
-				int index = aux.lastIndexOf(File.separatorChar, aux.length() - 5);
-				Fname = aux.substring(index + 1, aux.length() - 5);
+				int index = aux.lastIndexOf(File.separatorChar, aux.length());
+				Fname = aux.substring(index + 1, aux.length());
 
 				a = new ListFilesFuncoes(file.getPath());
 				long tempoTotal = a.Executar();
