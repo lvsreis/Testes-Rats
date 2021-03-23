@@ -20,15 +20,20 @@ public class Execucao {
 		List<File> lista = new LinkedList();
 		File f = new File(args[0]);
 
+		File func = new File("saida.csv");
+		func.delete();
+		func = new File("saida.csv");
+		String dados, path = func.getPath();
+
 		String Fname;
-		
+
 		File[] vet = f.listFiles();
 
 		for (int i = 0; i < vet.length; i++) {
 
 			if (vet[i].isDirectory()) {
 				lista.add(vet[i]);
-				System.out.println(vet[i]);
+				// System.out.println(vet[i]);
 			}
 
 		}
@@ -38,16 +43,24 @@ public class Execucao {
 			Collections.shuffle(lista);
 
 			for (File file : lista) {
-				
+
 				String aux = file.getPath();
 				int index = aux.lastIndexOf(File.separatorChar, aux.length() - 5);
-					Fname = aux.substring(index + 1, aux.length() - 5);
-				
-				
-				
+				Fname = aux.substring(index + 1, aux.length() - 5);
+
 				a = new ListFilesFuncoes(file.getPath());
 				long tempoTotal = a.Executar();
-				System.out.println(Fname + ";" + tempoTotal);
+
+				dados = Fname + ";" + tempoTotal;
+				System.out.println(dados);
+
+				try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
+					bw.write(dados);
+					bw.newLine();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
 			}
 		}
 	}
