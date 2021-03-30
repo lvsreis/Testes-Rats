@@ -1,0 +1,5 @@
+import pair.Sugar;
+
+public class Test {
+    private (String, Integer) p = ("12", 34);
+}
