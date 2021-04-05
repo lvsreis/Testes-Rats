@@ -618,7 +618,9 @@ void type =
    (basic_type / class_type / pair_type) dim*;
 
 // Declaration of a pair type   
-void pair_type = LPAR type COMMA type RPAR;
+
+void pair_type =
+ LPAR type COMMA type RPAR SPACE EQU LPAR ( class_type_list / Literal) COMMA ( class_type_list/Literal)  RPAR SEMI;
    
 void 
 reference_type =   basic_type dim+
