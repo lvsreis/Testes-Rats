@@ -620,8 +620,9 @@ void type =
 // Declaration of a pair type   
 
 void pair_type =
- LPAR type COMMA type RPAR SPACE EQU LPAR ( class_type_list / Literal) COMMA ( class_type_list/Literal)  RPAR SEMI;
-   
+ LPAR type COMMA type RPAR;
+
+
 void 
 reference_type =   basic_type dim+
  / 
@@ -984,8 +985,10 @@ Float_Literal
    / "true"  !Letter_Or_Digit
    / "false" !Letter_Or_Digit
    / "null" !Letter_Or_Digit
+   / pair_literal
    ) ws;
 
+void pair_literal = LPAR (Literal) COMMA (Literal)  RPAR SEMI;
 
 void Integer_Literal =  ( Hex_Numeral
    / Octal_Numeral /      
