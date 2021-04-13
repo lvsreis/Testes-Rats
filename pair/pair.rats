@@ -461,6 +461,8 @@ primary =   par_expression
                  SUPER super_suffix
  / 
                  Literal
+/
+                 pair_expression
  / 
                  NEW creator
  / 
@@ -469,6 +471,7 @@ primary =   par_expression
                  basic_type dim* DOT CLASS
  / VOID DOT CLASS;
 
+void pair_expression = LPAR expression COMMA expression  RPAR ;
 
 void identifier_suffix =
    LBRK ( RBRK dim* DOT CLASS / expression RBRK)
@@ -985,10 +988,10 @@ Float_Literal
    / "true"  !Letter_Or_Digit
    / "false" !Letter_Or_Digit
    / "null" !Letter_Or_Digit
-   / pair_literal
    ) ws;
 
-void pair_literal = LPAR (Literal) COMMA (Literal)  RPAR SEMI;
+
+
 
 void Integer_Literal =  ( Hex_Numeral
    / Octal_Numeral /      
