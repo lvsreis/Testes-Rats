@@ -471,7 +471,7 @@ primary =   par_expression
                  basic_type dim* DOT CLASS
  / VOID DOT CLASS;
 
-void pair_expression = LPAR expression COMMA expression  RPAR ;
+void closure_expression = LPAR expression COMMA expression  RPAR ;
 
 void identifier_suffix =
    LBRK ( RBRK dim* DOT CLASS / expression RBRK)
@@ -622,9 +622,8 @@ void type =
 
 // Declaration of a pair type   
 
-void pair_type =
- LPAR type COMMA type RPAR;
-
+void closure_type =
+ HTAG type LPAR type RPAR;
 
 void 
 reference_type =   basic_type dim+
@@ -1285,6 +1284,9 @@ void ONE_OR_MORE =
 
 void OPTIONAL =
    '?' ws;   
+
+void HTAG =
+  '#' ws;
 
 
 //-------------------------------------------------------------------------

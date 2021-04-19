@@ -463,6 +463,9 @@ primary =   par_expression
                  Literal
 /
                  pair_expression
+
+/               list_expression
+ 
  / 
                  NEW creator
  / 
@@ -472,6 +475,8 @@ primary =   par_expression
  / VOID DOT CLASS;
 
 void pair_expression = LPAR expression COMMA expression  RPAR ;
+
+void list_expression = "new" "ArrayList" LPAR RPAR;
 
 void identifier_suffix =
    LBRK ( RBRK dim* DOT CLASS / expression RBRK)
@@ -618,12 +623,15 @@ void dim_expr =
 
 
 void type =
-   (basic_type / class_type / pair_type) dim*;
+   (basic_type / class_type / pair_type / list_type) dim*;
 
 // Declaration of a pair type   
 
 void pair_type =
  LPAR type COMMA type RPAR;
+
+ void list_type =
+  "List" LPOINT type RPOINT;
 
 
 void 
