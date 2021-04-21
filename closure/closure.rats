@@ -19,7 +19,7 @@
 //===========================================================================
 
 
-module pair;
+module closure;
 
 
 //-------------------------------------------------------------------------
@@ -462,7 +462,7 @@ primary =   par_expression
  / 
                  Literal
 /
-                 pair_expression
+                 closure_expression
  / 
                  NEW creator
  / 
@@ -471,7 +471,7 @@ primary =   par_expression
                  basic_type dim* DOT CLASS
  / VOID DOT CLASS;
 
-void closure_expression = LPAR expression COMMA expression  RPAR ;
+void closure_expression = HTAG type LPAR type variable_declarator RPAR method_body ;
 
 void identifier_suffix =
    LBRK ( RBRK dim* DOT CLASS / expression RBRK)
@@ -548,7 +548,7 @@ void basic_type =
  / "int" / "long"
  / "float"
  / "double"
- / "boolean"
+ / "boolean" / "Integer"
 ) !(Letter_Or_Digit) ws;
 
 
@@ -618,7 +618,7 @@ void dim_expr =
 
 
 void type =
-   (basic_type / class_type / pair_type) dim*;
+   (basic_type / class_type / closure_type) dim*;
 
 // Declaration of a pair type   
 
