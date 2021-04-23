@@ -3,24 +3,17 @@ import java.util.ArrayList;
 
 	public class DivideAoMeio {
 
-	    public (int, int) dividirVetor(int vet[])
-	    {
-	    	List <int> lista1 = new ArrayList();
-	    	List <int> lista2 = new ArrayList();
-	    	
-	    	for(int i = 0; i < vet.length; i++)
-	    	{
-	    		if(i % 2 == 0)
-	    		{
-	    			lista1.add(vet[i]);
-	    		}
-	    		else
-	    		{
-	    			lista2.add(vet[i]);
-	    		}
-	    	}
+	   public void dividirVetor(List<Integer> n, (List<Integer>  , List<Integer> ) l){
 
-	    	return (lista1, lista2);
+	    	if(n.isEmpty())
+	    		return;
+
+	    	l.fst.add(n.remove());
+
+	    	(List <Integer>, List <Integer>) aux = (l.snd,l.fst);
+
+	    	return dividirVetor(n, aux);
+
 	    }
 
 	     public static void main(String[] args) {
@@ -31,9 +24,7 @@ import java.util.ArrayList;
 	     		vet[i] = (int)(Math.random() * (100));
 	     	}
 	     	
-	     	(List <int>, List <int>) metade = (new ArrayList(), new ArrayList());
+	     	(List <Integer>, List <Integer>) metade = (new ArrayList(), new ArrayList());
 	     	metade = dividirVetor(vet);	    	
 	    }
-
-
 	}

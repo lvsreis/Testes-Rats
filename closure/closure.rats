@@ -471,7 +471,7 @@ primary =   par_expression
                  basic_type dim* DOT CLASS
  / VOID DOT CLASS;
 
-void closure_expression = HTAG type LPAR type variable_declarator RPAR method_body ;
+void closure_expression = HTAG type formal_parameters method_body ;
 
 void identifier_suffix =
    LBRK ( RBRK dim* DOT CLASS / expression RBRK)
@@ -548,7 +548,7 @@ void basic_type =
  / "int" / "long"
  / "float"
  / "double"
- / "boolean" / "Integer"
+ / "boolean"
 ) !(Letter_Or_Digit) ws;
 
 

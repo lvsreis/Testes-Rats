@@ -4,23 +4,18 @@ import pair.Sugar;
 
 	    public (int, int) vetor(int vet[])
 	    {
-	    	(int, int) mM;
+	    	(int, int) mM =(vet[0],vet[0]);
 
-	    	for(int i = 0; i < vet.length; i++)
+	    	for(int i = 1; i < vet.length; i++)
 	    	{
-	    		if(mM == null)
+	    		 if(vet[i] > mM.fst)
 	    		{
-	    			mM = (vet[i], vet[i]);
+	    			mM.fst=vet[i];
 	    		}
 
-	    		else if(i > mM.getFst())
+	    		else if(vet[i] < mM.snd)
 	    		{
-	    			mM.setFst(vet[i]);
-	    		}
-
-	    		else if(i < mM.getSnd())
-	    		{
-	    			mM.setSnd(vet[i]);
+	    			mM.snd=vet[i];
 	    		}
 	    	}
 	    	return mM;
