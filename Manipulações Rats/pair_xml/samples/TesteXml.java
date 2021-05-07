@@ -17,7 +17,7 @@ public class Test extends DefaultHandler {
   public static void main(String[] args) throws SAXException {
     ContentHandler ch = new Test();
     
-    ch.<xsd:schema
+    <xsd:schema
 		     targetNamespace="http://www.w3.org/2001/XMLSchema"
 		     blockDefault="#all"
 		     elementFormDefault="qualified"
