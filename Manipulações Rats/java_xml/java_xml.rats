@@ -26,7 +26,7 @@ module java_xml;
 //  Compilation Unit
 
 //-------------------------------------------------------------------------
-public void compilation_unit = ws package_declaration? (import_declaration)* ( (type_declaration)* EOT / Document)*;
+public void compilation_unit = ws package_declaration? (import_declaration)*  (type_declaration)* EOT ;
 
 void package_declaration = annotation* PACKAGE qualified_id SEMI;
 
@@ -254,7 +254,7 @@ void block =
 
 
 void block_statements =
-   block_statement*;
+      (block_statement/Document)*;
 
 
 void block_statement =

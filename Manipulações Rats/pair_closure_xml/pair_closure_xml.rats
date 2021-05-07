@@ -19,7 +19,7 @@
 //===========================================================================
 
 
-module pair_xml;
+module pair_closure_xml;
 
 
 //-------------------------------------------------------------------------
@@ -28,8 +28,8 @@ module pair_xml;
 
 //-------------------------------------------------------------------------
 
-public void start = (compilation_unit / Document)+;
-void compilation_unit = ws package_declaration? (import_declaration)* (type_declaration)* EOT;
+
+public void compilation_unit = ws package_declaration? (import_declaration)* (type_declaration)* EOT;
 
 void package_declaration = annotation* PACKAGE qualified_id SEMI;
 
@@ -257,7 +257,7 @@ void block =
 
 
 void block_statements =
-   block_statement*;
+   (block_statement/Document)*;
 
 
 void block_statement =
@@ -460,12 +460,11 @@ primary =   par_expression
  / 
                  SUPER super_suffix
  / 
-                 Literal
+                 Literal 
+ /                
+                 pair_expression 
 /
-                 pair_expression
-
-/               list_expression
- 
+                 closure_expression
  / 
                  NEW creator
  / 
@@ -474,9 +473,9 @@ primary =   par_expression
                  basic_type dim* DOT CLASS
  / VOID DOT CLASS;
 
-void pair_expression = LPAR expression COMMA expression  RPAR ;
+ void pair_expression = LPAR expression COMMA expression  RPAR ;
 
-void list_expression = "new" "ArrayList" LPAR RPAR;
+void closure_expression = HTAG type formal_parameters method_body ;
 
 void identifier_suffix =
    LBRK ( RBRK dim* DOT CLASS / expression RBRK)
@@ -623,16 +622,15 @@ void dim_expr =
 
 
 void type =
-   (basic_type / class_type / pair_type / list_type) dim*;
+   (basic_type / class_type / closure_type / pair_type) dim*;
 
 // Declaration of a pair type   
 
-void pair_type =
+void closure_type =
+ HTAG type LPAR type RPAR;
+
+ void pair_type =
  LPAR type COMMA type RPAR;
-
- void list_type =
-  "List" LPOINT type RPOINT;
-
 
 void 
 reference_type =   basic_type dim+
@@ -917,7 +915,7 @@ void FINAL =  "final" !Letter_Or_Digit ws;
 void FOR =  "for" !Letter_Or_Digit ws;
    
 
-void IF	=
+void IF =
    "if" !Letter_Or_Digit ws;
    
 
@@ -1294,6 +1292,9 @@ void ONE_OR_MORE =
 void OPTIONAL =
    '?' ws;   
 
+void HTAG =
+  '#' ws;
+
 
 //-------------------------------------------------------------------------
 
@@ -1317,6 +1318,7 @@ void endOfLine =
 void comment =   "//" (!endOfLine _)* endOfLine
   /
                  "/*" (!"*/"_)* "*/" ;
+
 
 /*-------------------------------------------------------------------------------------
 
