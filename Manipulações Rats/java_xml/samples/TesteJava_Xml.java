@@ -18,34 +18,34 @@ public class Test extends DefaultHandler {
     ContentHandler ch = new Test();
     
     <xsd:schema
-		     targetNamespace="http://www.w3.org/2001/XMLSchema"
-		     blockDefault="#all"
-		     elementFormDefault="qualified"
-		     version="1.0">
-		     <{http://www.w3.org/2001/XMLSchema}simpleType name="derivationSet">
-		       <annotation>
-		         <documentation>
-		           A utility type, not for public use
-		         </documentation> 
-		         <documentation>
-		           #all or (possibly empty) subset of {extension, restriction}
-		         </documentation>
- 		      </annotation>
-	 	      <union>
-		         <simpleType>
-		           <restriction base="token">
-		             <enumeration value="#all"/>
-		           </restriction>
-		         </simpleType>
-		         <simpleType>
-		           <list itemType="reducedDerivationControl"/>
- 		        </simpleType>
-	 	      </union>
-		     </{http://www.w3.org/2001/XMLSchema}simpleType>  
-		   </xsd:schema>;
+         targetNamespace="http://www.w3.org/2001/XMLSchema"
+         blockDefault="#all"
+         elementFormDefault="qualified"
+         version="1.0">
+         <{http://www.w3.org/2001/XMLSchema}simpleType name="derivationSet">
+           <annotation>
+             <documentation>
+               A utility type, not for public use
+             </documentation> 
+             <documentation>
+               #all or (possibly empty) subset of {extension, restriction}
+             </documentation>
+          </annotation>
+          <union>
+             <simpleType>
+               <restriction base="token">
+                 <enumeration value="#all"/>
+               </restriction>
+             </simpleType>
+             <simpleType>
+               <list itemType="reducedDerivationControl"/>
+            </simpleType>
+          </union>
+         </{http://www.w3.org/2001/XMLSchema}simpleType>  
+       </xsd:schema>;
   }
-  	
-	private int indentation = 0;
+    
+  private int indentation = 0;
 
   /** When you see a start tag, print it out and then
    *  increase indentation by two spaces. If the
