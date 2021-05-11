@@ -1,4 +1,4 @@
-package xml;
+package test;
 
 import java.util.StringTokenizer;
 
@@ -13,11 +13,11 @@ import xml.AsSax;
 /*
  * code for printing based on http://www.informit.com/articles/article.aspx?p=26351&seqNum=5
  */
-public class Test extends DefaultHandler {
+public class Test01 extends DefaultHandler {
   public static void main(String[] args) throws SAXException {
-    ContentHandler ch = new Test();
+    ContentHandler ch = new Test01();
     
-    <xsd:schema
+    ch.<xsd:schema
 		     targetNamespace="http://www.w3.org/2001/XMLSchema"
 		     blockDefault="#all"
 		     elementFormDefault="qualified"

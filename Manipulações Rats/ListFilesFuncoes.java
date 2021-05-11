@@ -44,7 +44,7 @@ public class ListFilesFuncoes {
 		Queue<File> q;
 		q = new LinkedList();
 
-		if (f.getPath().startsWith(".java", f.getPath().length() - 5)) {
+		if (f.getPath().startsWith(".sugj", f.getPath().length() - 5)) {
 			lista.add(f);
 		}
 
@@ -60,7 +60,7 @@ public class ListFilesFuncoes {
 
 					if (inst[i].isDirectory()) {
 						q.add(inst[i]);
-					} else if (inst[i].getPath().startsWith(".java", inst[i].getPath().length() - 5)) {
+					} else if (inst[i].getPath().startsWith(".sugj", inst[i].getPath().length() - 5)) {
 						lista.add(inst[i]);
 					}
 				}
