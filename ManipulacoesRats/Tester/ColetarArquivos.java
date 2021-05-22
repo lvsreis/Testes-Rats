@@ -12,20 +12,21 @@ import java.util.Map;
 
 
 public class ColetarArquivos {
-    private List<File> lista;
+    private List<String> lista;
     private Map<String, List<File>> collection;
+    
+    public ColetarArquivos() {
+         lista = new ArrayList();
+         collection = new HashMap();
+    }
 
-    private void coletarArquivos(String endereco) {
+    private void collectFiles(String endereco) {
 
         File f = new File(endereco);
-        File inst[];
+        File instancias[];
 
         Queue<File> q;
         q = new LinkedList();
-
-        if (f.getPath().startsWith(".sugj", f.getPath().length() - 5)) {
-            lista.add(f);
-        }
 
         q.add(f);
 
@@ -34,13 +35,15 @@ public class ColetarArquivos {
             while (!q.isEmpty()) {
         
                 f = q.remove();
-                inst = f.listFiles();
-                for (int i = 0; i < inst.length; i++) {
+                instancias = f.listFiles();
+                for (int i = 0; i < instancias.length; i++) {
 
-                    if (inst[i].isDirectory()) {
-                        q.add(inst[i]);
-                    } else if (inst[i].getPath().startsWith(".sugj", inst[i].getPath().length() - 5)) {
-                        lista.add(inst[i]);
+                    if (instancias[i].isDirectory()) {
+                        q.add(instancias[i]);
+                        collection.put(f.getName(), new ArrayList());
+                        lista.add(f.getName());
+                    } else if (instancias[i].getPath().startsWith(".sugj", instancias[i].getPath().length() - 5)) {
+                        collection.get(f.getName()).add(instancias[i]);
                     }
                 }
             }
@@ -50,5 +53,13 @@ public class ColetarArquivos {
             System.out.println("Deu merda " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    public Map<String, List<File>> getCollection() {
+     return collection;   
+    }
+
+    public List<String> getLista() {
+        return lista;
     }
 }

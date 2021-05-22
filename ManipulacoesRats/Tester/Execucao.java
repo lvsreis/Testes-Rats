@@ -1,5 +1,3 @@
-
-//package samples;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -16,7 +14,7 @@ public class Execucao {
 
 	public static void main(String[] args) throws IOException {
 
-		ListFilesFuncoes a;
+		RunClosure a;
 		List<File> lista = new LinkedList();
 		File f = new File(args[0]);
 		
@@ -50,7 +48,7 @@ public class Execucao {
 				int index = aux.lastIndexOf(File.separatorChar, aux.length());
 				Fname = aux.substring(index + 1, aux.length());
 
-				a = new ListFilesFuncoes(file.getPath());
+				a = new RunClosure(file.getPath());
 				long tempoTotal = a.Executar();
 
 				dados = Fname + ";" + tempoTotal;
