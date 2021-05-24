@@ -9,10 +9,12 @@ import java.util.Scanner;
 import java.util.Collections;
 import ManipulacoesRats.RatsParsers.closure;
 
-public class RunClosure implements InterfaceParser {
+public class RunClosure extends Escrita implements Runner {
+ 	
+ 	public RunClosure(){};
 
 	@Override
-	public long Executar(List<File> lista) throws IOException {
+	public void Run (List<File> lista) throws IOException {
 
 		long beginTime, endTime, auxTimeMedicao = 0;
 		Result r;
@@ -30,15 +32,7 @@ public class RunClosure implements InterfaceParser {
 			endTime = System.currentTimeMillis();
 			auxTimeMedicao += (endTime - beginTime);	
 		}
-		
-		return auxTimeMedicao;
-	}
-
-	ListFilesFuncoes(String args) throws IOException {
-
-		lista = new LinkedList();
-
-		coletarArquivos(args);
+		escrever("nome da pasta"+";"+auxTimeMedicao);
 	}
 
 }

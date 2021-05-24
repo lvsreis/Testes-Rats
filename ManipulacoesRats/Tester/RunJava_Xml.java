@@ -7,12 +7,14 @@ import java.io.FileReader;
 import xtc.parser.Result;
 import java.util.Scanner;
 import java.util.Collections;
-import ManipulacoesRats.RatsParser.java_xml;
+import ManipulacoesRats.RatsParsers.closure;
 
-public class RunClosure implements InterfaceParser {
+public class RunJava_Xml extends Escrita implements Runner {
+ 	
+ 	public RunJava_Xml(){};
 
 	@Override
-	public long Executar(List<File> lista) throws IOException {
+	public void Run (List<File> lista) throws IOException {
 
 		long beginTime, endTime, auxTimeMedicao = 0;
 		Result r;
@@ -24,21 +26,13 @@ public class RunClosure implements InterfaceParser {
 		for (int i = 0; i < lista.size(); i++) {
 			pth = (lista.get(i)).getPath();
 			file = new FileReader(pth);
-			java_xml parser =  java_xml(file, pth);
+			java_xml parser = new java_xml(file, pth);
 			beginTime = System.currentTimeMillis();
 			r = parser.pcompilation_unit(0);
 			endTime = System.currentTimeMillis();
 			auxTimeMedicao += (endTime - beginTime);	
 		}
-		
-		return auxTimeMedicao;
-	}
-
-	ListFilesFuncoes(String args) throws IOException {
-
-		lista = new LinkedList();
-
-		coletarArquivos(args);
+		escrever("nome da pasta"+";"+auxTimeMedicao);
 	}
 
 }

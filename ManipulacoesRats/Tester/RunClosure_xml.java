@@ -7,12 +7,14 @@ import java.io.FileReader;
 import xtc.parser.Result;
 import java.util.Scanner;
 import java.util.Collections;
-import ManipulacoesRats.RatsParsers.closure_xml;
+//import ManipulacoesRats.RatsParsers.closure;
 
-public class RunClosure_xml implements InterfaceParser {
+public class RunClosure_Xml extends Escrita implements Runner {
+ 	
+ 	public RunClosure_Xml(){};
 
 	@Override
-	public void Executar(List<File> lista) throws IOException {
+	public void Run (List<File> lista) throws IOException {
 
 		long beginTime, endTime, auxTimeMedicao = 0;
 		Result r;
@@ -30,15 +32,7 @@ public class RunClosure_xml implements InterfaceParser {
 			endTime = System.currentTimeMillis();
 			auxTimeMedicao += (endTime - beginTime);	
 		}
-		
-		//return auxTimeMedicao; Mandar como parâmetro o tempo e o nome da pasta 
-	}
-
-	ListFilesFuncoes(String args) throws IOException {
-
-		lista = new LinkedList();
-
-		coletarArquivos(args);
+		escrever("nome da pasta"+";"+auxTimeMedicao);
 	}
 
 }
