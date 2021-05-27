@@ -10,7 +10,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class ColetarArquivos {
     private List<String> lista;
     private Map<String, List<File>> collection;

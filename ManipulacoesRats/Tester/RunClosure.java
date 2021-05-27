@@ -1,3 +1,4 @@
+package ratsParsers.closure;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -7,14 +8,13 @@ import java.io.FileReader;
 import xtc.parser.Result;
 import java.util.Scanner;
 import java.util.Collections;
-import ManipulacoesRats.RatsParsers.closure;
 
 public class RunClosure extends Escrita implements Runner {
  	
  	public RunClosure(){};
 
 	@Override
-	public void Run (List<File> lista) throws IOException {
+	public void Run(List<File> lista) throws IOException {
 
 		long beginTime, endTime, auxTimeMedicao = 0;
 		Result r;
