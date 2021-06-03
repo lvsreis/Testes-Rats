@@ -14,6 +14,8 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 
+		CSVTable tabela = new CSVTable();
+		
 		List<File> lista = new LinkedList();
 		File f = new File(args[0]);
 		
@@ -44,39 +46,41 @@ public class Main {
 				switch(file.getName){
 					case "closure":
 							RunClosure a = new RunClosure();
-							long tempoTotal = a.Run(file.listFiles());
+							 a.Run(file.listFiles());
 							break;
 					case "closure_xml":
-							RunClosure_Xml a = new RunClosure_Xml();
-							long tempoTotal = a.Run(file.listFiles());
+							RunClosure_Xml b = new RunClosure_Xml();
+							 b.Run(file.listFiles());
 							break;
 					case "java_xml":
-							RunJava a = new RunJava();
-							long tempoTotal = a.Run(file.listFiles());
+							RunJava c = new RunJava();
+							 c.Run(file.listFiles());
 							break;
 					case "pair":
-							RunPair a = new RunPair();
-							long tempoTotal = a.Run(file.listFiles());
+							RunPair d = new RunPair();
+							 d.Run(file.listFiles());
 							break;
 					case "pair_closure":
-							RunPair_Closure a = new RunPair_Closure();
-							long tempoTotal = a.Run(file.listFiles());
+							RunPair_Closure e = new RunPair_Closure();
+							 e.Run(file.listFiles());
 							break;
 					case "pair_closure_xml":
-							RunPair_Closure_Xml a = new RunPair_Closure_Xml();
-							long tempoTotal = a.Run(file.listFiles());
+							RunPair_Closure_Xml f = new RunPair_Closure_Xml();
+							 f.Run(file.listFiles());
 							break;
 					case "pair_xml":
-							RunPair_Xml a = new RunPair_Xml();
-							long tempoTotal = a.Run(file.listFiles());
+							RunPair_Xml g = new RunPair_Xml();
+							 g.Run(file.listFiles());
 							break;
 					case "xml":
-							RunXml a = new RunXml();
-							long tempoTotal = a.Run(file.listFiles());
+							RunXml h = new RunXml();
+							 h.Run(file.listFiles());
 							break;									
 
 							default;
 				}
+
+				tabela.csvToFile();
 			}
 		}
 	}

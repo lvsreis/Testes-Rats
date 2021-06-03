@@ -45,12 +45,14 @@ class CSVTable { //ArrayList de ArrayList de strings
 	}
 
 	public void csvToFile() {
-
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
+		//String path = "";
+		File f = new File(saida.csv);
+		
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(f.getPath(), true))) {
 			String aux = "";		
 			
 			for(int i = 0; i < tabela.size(); i++) {
-						aux = getAt(i, 0) + ";" + getAt(i, 1);
+						aux = getAt(i, 0) + sep + getAt(i, 1);
 				}
 				bw.write(aux);
 				bw.newLine();
