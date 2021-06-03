@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.io.*;
 
 class CSVTable { //ArrayList de ArrayList de strings
 
@@ -41,7 +42,7 @@ class CSVTable { //ArrayList de ArrayList de strings
 	}
 	
 	//getAt(//Recebe dois inteiros)Linha e coluna
-	public String getAt(int linha, int coluna) {
+	public Object getAt(int linha, int coluna) {
 		return tabela.get(linha).get(coluna);
 	}
 
@@ -52,7 +53,7 @@ class CSVTable { //ArrayList de ArrayList de strings
 			String aux = "";		
 			
 			for(int i = 0; i < tabela.size(); i++) {
-						aux = getAt(i, 0) + sep + getAt(i, 1);
+						aux = (String)getAt(i, 0); //+ sep + getAt(i, 1);
 				}
 				bw.write(aux);
 				bw.newLine();

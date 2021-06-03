@@ -1,3 +1,4 @@
+import ratsParsers.pair_closure.pair_closure;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -14,7 +15,7 @@ public class RunPair_Closure extends Escrita implements Runner {
  	public RunPair_Closure(){};
 
 	@Override
-	public void Run (List<File> lista) throws IOException {
+	public void Run (List<File> lista) {
 
 		long beginTime, endTime, auxTimeMedicao = 0;
 		Result r;
@@ -32,7 +33,7 @@ public class RunPair_Closure extends Escrita implements Runner {
 			endTime = System.currentTimeMillis();
 			auxTimeMedicao += (endTime - beginTime);	
 		}
-		escrever("nome da pasta"+";"+auxTimeMedicao);
+		AddLine("pair_closure", (String)auxTimeMedicao);
 	}
 
 }

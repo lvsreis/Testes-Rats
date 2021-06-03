@@ -14,7 +14,7 @@ public class RunJava extends CSVTable implements Runner {
  	public RunJava(){};
 
 	@Override
-	public void Run(List<File> lista) throws IOException {
+	public void Run(List<File> lista)  {
 
 		long beginTime, endTime, auxTimeMedicao = 0;
 		Result r;
@@ -32,7 +32,7 @@ public class RunJava extends CSVTable implements Runner {
 			endTime = System.currentTimeMillis();
 			auxTimeMedicao += (endTime - beginTime);	
 		}
-		AddLine(lista.getpath().lastIndexOf(""\"), auxTimeMedicao);
+		AddLine("java", (String)auxTimeMedicao);
 	}
 
 }

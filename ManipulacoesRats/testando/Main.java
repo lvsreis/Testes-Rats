@@ -21,9 +21,7 @@ public class Main {
 		
 		File f = new File(args[0]);
 		
-		String Fname;
-		
-		String dados, path = func.getPath();
+		//String Fname;
 		
 		File[] vet = f.listFiles();
 
@@ -40,11 +38,11 @@ public class Main {
 
 			for (File file : lista) {
 
-				String aux = file.getPath();
-				int index = aux.lastIndexOf(File.separatorChar, aux.length());
-				Fname = aux.substring(index + 1, aux.length());
-				switch(file.getName) {
-					case "closure":
+				//String aux = file.getPath();
+				//int index = aux.lastIndexOf(File.separatorChar, aux.length());
+				//Fname = aux.substring(index + 1, aux.length());
+				switch(file.getName()) {
+					/*case "closure":
 							RunClosure a = new RunClosure();
 							 a.Run(vectorToList(file.listFiles()));
 							break;
@@ -75,7 +73,12 @@ public class Main {
 					case "xml":
 							RunXml h = new RunXml();
 							 h.Run(vectorToList(file.listFiles()));
-							break;
+							break;*/
+
+					case "java":
+						RunJava j = new RunJava();
+						j.Run(vectorToList(file.listFiles()));
+						break;
 							
 							default:
 				}

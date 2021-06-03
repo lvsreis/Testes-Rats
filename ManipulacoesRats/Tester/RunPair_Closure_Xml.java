@@ -1,3 +1,4 @@
+import ratsParsers.pair_closure_xml.pair_closure_xml;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -9,12 +10,12 @@ import java.util.Scanner;
 import java.util.Collections;
 import ManipulacoesRats.RatsParsers.closure;
 
-public class RunPair_Closure_Xml extends Escrita implements Runner {
+public class RunPair_Closure_Xml extends CSVTable implements Runner {
  	
  	public RunPair_Closure_Xml(){};
 
 	@Override
-	public void Run (List<File> lista) throws IOException {
+	public void Run (List<File> lista) {
 
 		long beginTime, endTime, auxTimeMedicao = 0;
 		Result r;
@@ -32,7 +33,7 @@ public class RunPair_Closure_Xml extends Escrita implements Runner {
 			endTime = System.currentTimeMillis();
 			auxTimeMedicao += (endTime - beginTime);	
 		}
-		escrever("nome da pasta"+";"+auxTimeMedicao);
+		AddLine("pair_closure_xml", (String)auxTimeMedicao);
 	}
 
 }
