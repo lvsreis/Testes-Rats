@@ -83,7 +83,7 @@ public class Main {
 							default:
 				}
 
-				tabela.csvToFile();
+				tabela.csvToFile("../Reports/saida.csv");
 			}
 		}
 	}

@@ -5,7 +5,7 @@
 // on Sexta-feira, 13 de Novembro de 2020 at 13:21:08.
 // Edit at your own risk.
 // ===========================================================================
-
+package java;
 import java.io.Reader;
 import java.io.IOException;
 

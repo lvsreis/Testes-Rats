@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.io.*;
+//criar main e brincar de criar tabela
 
 class CSVTable { //ArrayList de ArrayList de strings
 
@@ -18,22 +19,28 @@ class CSVTable { //ArrayList de ArrayList de strings
 	}
 
 	//Método AddLine = adiciona linha em branco sem nada na tabela
-	public void AddLine(String nome, long tempo) {
+	public void addLine( ) {
 		
 		ArrayList<Object> l = new ArrayList<Object>(); 
 		tabela.add(l);
 		
-		int tamTabela = tabela.size();
+	}
+	//___________________________________________
+
+	public void addLine(int size ) {
 		
-		AddToLine(tamTabela, nome, tempo);
+		ArrayList<Object> l = new ArrayList<Object>(size); 
+		tabela.add(l);
+
 	}
 
+	//____________________________________________
 	//AddToLine = Add uma coluna no final da linha; recebe como parametro a linha que vc
 	//quer colocar 
-	public void AddToLine(int linha, String nome, long tempo) {
+	public void addToLine(int line, int column, Object value) {
 
-		tabela.get(linha).add(nome);
-		tabela.get(linha).add(tempo);
+		tabela.get(line).add(column,value);
+	
 	}
 
 	//getLine(//Recebe um inteiro)
@@ -46,17 +53,24 @@ class CSVTable { //ArrayList de ArrayList de strings
 		return tabela.get(linha).get(coluna);
 	}
 
-	public void csvToFile() {
-		File f = new File("../reports/saida.csv");
+	public void csvToFile(String path) {
+		File f = new File(path);
 		
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(f.getPath(), true))) {
-			String aux = "";		
-			
-			for(int i = 0; i < tabela.size(); i++) {
-						aux = (String)getAt(i, 0); //+ sep + getAt(i, 1);
+			String aux = "";
+
+			for(ArrayList<Object> l : tabela) {
+				aux = "";
+				for (Object o : l){
+					aux = aux + o.toString()+ sep;
 				}
+
 				bw.write(aux);
 				bw.newLine();
+			}
+
+			bw.close();
+				
 				
 			} catch (IOException e) {
 					e.printStackTrace();
