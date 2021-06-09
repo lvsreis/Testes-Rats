@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.io.*;
+import java.util.Scanner;
 //criar main e brincar de criar tabela
 
 class CSVTable { //ArrayList de ArrayList de strings
@@ -39,7 +40,7 @@ class CSVTable { //ArrayList de ArrayList de strings
 	//quer colocar 
 	public void addToLine(int line, int column, Object value) {
 
-		tabela.get(line).add(column,value);
+		tabela.get(line).add(column, value); //lembrar do set
 	
 	}
 
@@ -70,11 +71,40 @@ class CSVTable { //ArrayList de ArrayList de strings
 			}
 
 			bw.close();
-				
-				
+								
 			} catch (IOException e) {
 					e.printStackTrace();
 				}
+	}
+
+	public static void main(String[] args) {
+
+		String path = "../testando/brincando.csv";
+		Scanner teclado = new Scanner(System.in);
+
+		CSVTable tabela = new CSVTable();
+
+		tabela.addLine(2);
+		tabela.addToLine(0, 0, 50);
+		tabela.addToLine(0, 1, 50);
+		tabela.addLine(2);
+		/*tabela.addLine(2);
+		tabela.addLine(2);
+		tabela.addLine(2);
+		tabela.addLine(2);
+		System.out.println("Tam: " + tabela.length);*/
+	
+
+		System.out.println("Digite uma linha");
+		int linha = teclado.nextInt();
+
+		System.out.println("Digite uma coluna");
+		int coluna = teclado.nextInt();
+
+		tabela.addToLine(linha, coluna, 45);
+
+		tabela.csvToFile(path);
+
 	}
 	
 }
