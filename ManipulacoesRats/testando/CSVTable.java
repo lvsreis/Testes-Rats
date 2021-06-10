@@ -16,20 +16,16 @@ class CSVTable { //ArrayList de ArrayList de strings
 	public CSVTable(char s) {
 		this();
 		sep = s;
-		
 	}
 
 	//Método AddLine = adiciona linha em branco sem nada na tabela
-	public void addLine( ) {
-		
+	public void addLine() {
 		ArrayList<Object> l = new ArrayList<Object>(); 
 		tabela.add(l);
-		
 	}
 	//___________________________________________
 
 	public void addLine(int size ) {
-		
 		ArrayList<Object> l = new ArrayList<Object>(size); 
 		tabela.add(l);
 
@@ -39,9 +35,7 @@ class CSVTable { //ArrayList de ArrayList de strings
 	//AddToLine = Add uma coluna no final da linha; recebe como parametro a linha que vc
 	//quer colocar 
 	public void addToLine(int line, int column, Object value) {
-
 		tabela.get(line).add(column, value); //lembrar do set
-	
 	}
 
 	//getLine(//Recebe um inteiro)
@@ -50,14 +44,14 @@ class CSVTable { //ArrayList de ArrayList de strings
 	}
 	
 	//getAt(//Recebe dois inteiros)Linha e coluna
-	public Object getAt(int linha, int coluna) {
+	public Object getAt(int linha, int coluna) { //Usar somente a linha
 		return tabela.get(linha).get(coluna);
 	}
 
 	public void csvToFile(String path) {
 		File f = new File(path);
 		
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter(f.getPath(), true))) {
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(f.getPath(), false))) {
 			String aux = "";
 
 			for(ArrayList<Object> l : tabela) {
@@ -77,7 +71,7 @@ class CSVTable { //ArrayList de ArrayList de strings
 				}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) { 
 
 		String path = "../testando/brincando.csv";
 		Scanner teclado = new Scanner(System.in);
@@ -85,9 +79,17 @@ class CSVTable { //ArrayList de ArrayList de strings
 		CSVTable tabela = new CSVTable();
 
 		tabela.addLine(2);
-		tabela.addToLine(0, 0, 50);
-		tabela.addToLine(0, 1, 50);
+		tabela.addToLine(0, 0, "brincando");
+		tabela.addToLine(0, 1, 40);
 		tabela.addLine(2);
+		tabela.addToLine(1, 0, "de");
+		tabela.addToLine(1, 1, 20);
+		tabela.addLine(2);
+		tabela.addToLine(2, 0, "criar");
+		tabela.addToLine(2, 1, 450);
+		tabela.addLine(2);
+		tabela.addToLine(3, 0, "tabela");
+		tabela.addToLine(3, 1, 750);
 		/*tabela.addLine(2);
 		tabela.addLine(2);
 		tabela.addLine(2);
@@ -95,15 +97,15 @@ class CSVTable { //ArrayList de ArrayList de strings
 		System.out.println("Tam: " + tabela.length);*/
 	
 
-		System.out.println("Digite uma linha");
+		/*System.out.println("Digite uma linha");
 		int linha = teclado.nextInt();
 
 		System.out.println("Digite uma coluna");
 		int coluna = teclado.nextInt();
 
-		tabela.addToLine(linha, coluna, 45);
+		tabela.addToLine(linha, coluna, 45);*/
 
-		tabela.csvToFile(path);
+		tabela.csvToFile(path); //Chamar função de arquivo CSV
 
 	}
 	
