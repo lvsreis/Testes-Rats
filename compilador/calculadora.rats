@@ -1,0 +1,21 @@
+module calculadora;
+
+public void compile = Stmt ;
+
+ void Stmt  =  init  Seila* ;
+
+ void init = Exp Atri Num SEMI ;
+
+ void Seila= (((Exp Atri Num/Exp (Ope Num/Exp)*)) /(Num/Exp (Ope Num/Exp)*)) SEMI;
+
+ void Exp= [a-z] W;
+
+ void Num = [0-9][0-9]*W;
+
+ void Atri = "=" W;
+
+ void SEMI = ";" W; 
+
+ void Ope = ("+"/"*")W;
+
+ void W = (" " / "\r" / "\n" / "\t" )* ;
