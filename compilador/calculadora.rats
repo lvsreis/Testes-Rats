@@ -1,12 +1,12 @@
 module calculadora;
 
-public void compile = Stmt ;
+public void compile = Stmt !_ ;
 
  void Stmt  =  init  Seila* ;
 
  void init = Exp Atri Num SEMI ;
 
- void Seila= (((Exp Atri Num/Exp (Ope Num/Exp)*)) /(Num/Exp (Ope Num/Exp)*)) SEMI;
+ void Seila= ( ( (Exp Atri (Num/Exp) (Ope (Num/Exp) )* ) ) / ( (Num/Exp) (Ope (Num/Exp) )* ) ) SEMI;
 
  void Exp= [a-z] W;
 

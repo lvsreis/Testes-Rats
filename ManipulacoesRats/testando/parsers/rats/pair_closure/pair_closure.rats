@@ -2,7 +2,7 @@
 //===========================================================================
 
 //   
-//This is a specification of the SugarJ grammar.
+//This is a specification of Java extended with Pairs.
 
 //  The grammar is a adaptation version of the Java grammar specification for Mouse.
 
@@ -19,7 +19,7 @@
 //===========================================================================
 
 
-module ;
+module pair_closure;
 
 
 //-------------------------------------------------------------------------
@@ -29,13 +29,9 @@ module ;
 //-------------------------------------------------------------------------
 
 
-
 public void compilation_unit = ws package_declaration? (import_declaration)* (type_declaration)* EOT;
 
 void package_declaration = annotation* PACKAGE qualified_id SEMI;
-
-// For now, I ignore the star. It's necessary look up in all the package if there is any sugar declaration.
-// However, for a concept proof, the first alternative is enough. 
 
 void import_declaration =
   IMPORT STATIC? qualified_id (DOT STAR)? SEMI;
@@ -44,74 +40,8 @@ void import_declaration =
 void type_declaration = modifier* (class_declaration
                          /  enum_declaration
                         / interface_declaration
-                       / annotation_type_declaration 
-                      / sugar_declaration)
+                       / annotation_type_declaration)
                      / SEMI;   
-
-
-//===========================================================================
-
-//
-
-//  Sugar Declaration
-
-//
-
-//=========================================================================== 
-
-
-// The modifier must be 'public' 
-void sugar_declaration = ws SUGAR namef ;
-void namef = Id ws LWING defining_syntax RWING;
-
-
-//===========================================================================
-
-//
-
-//  PEG Rules
-
-//
-
-//=========================================================================== 
-
-void 
-defining_syntax =  CONTEXT_FREE_SYNTAX peg_rule
-  ; 
-
-
-void peg_rule =  (peg_expr ARROW id)* ;
-void id = (Id ws SEMI)* ;
-void peg_expr =
-  peg_seq (CHOICE peg_seq
-)*;
-  
-
-void peg_seq =  peg_predicate (peg_predicate)* /  ;
-
-
-void peg_predicate = '!' peg_unary_op
-                    /'&' peg_unary_op
-                    /peg_unary_op ;
-
-void peg_unary_op =
-    peg_factor REPEAT   / 
-                                   peg_factor ONE_OR_MORE   / 
-                                   peg_factor OPTIONAL 
-  / 
-                                   peg_factor ws
-  ;
-  
-
-
-void peg_factor = (PEG_Literal
-  / Id
-  / '[' RANGE+ ']'
-  / '.')/ 
-                 '(' peg_expr ')'
-  ;
-
-
 
 //-------------------------------------------------------------------------
 
@@ -530,7 +460,11 @@ primary =   par_expression
  / 
                  SUPER super_suffix
  / 
-                 Literal
+                 Literal 
+ /                
+                 pair_expression 
+/
+                 closure_expression
  / 
                  NEW creator
  / 
@@ -539,6 +473,9 @@ primary =   par_expression
                  basic_type dim* DOT CLASS
  / VOID DOT CLASS;
 
+ void pair_expression = LPAR expression COMMA expression  RPAR ;
+
+void closure_expression = HTAG type formal_parameters method_body ;
 
 void identifier_suffix =
    LBRK ( RBRK dim* DOT CLASS / expression RBRK)
@@ -685,7 +622,15 @@ void dim_expr =
 
 
 void type =
-   (basic_type / class_type) dim*;
+   (basic_type / class_type / closure_type / pair_type) dim*;
+
+// Declaration of a pair type   
+
+void closure_type =
+ HTAG type LPAR type RPAR;
+
+ void pair_type =
+ LPAR type COMMA type RPAR;
 
 void 
 reference_type =   basic_type dim+
@@ -922,7 +867,6 @@ void Keyword =   ( "abstract"
    / "transient"   / "true"   / "try"   / "void"
    / "volatile"
    / "while"
-   / "sugar"
    / "context-free syntax"
 ) !Letter_Or_Digit;
 
@@ -971,7 +915,7 @@ void FINAL =  "final" !Letter_Or_Digit ws;
 void FOR =  "for" !Letter_Or_Digit ws;
    
 
-void IF	=
+void IF =
    "if" !Letter_Or_Digit ws;
    
 
@@ -1032,10 +976,6 @@ void WHILE =  "while" !Letter_Or_Digit ws;
 
 void CONTEXT_FREE_SYNTAX =
    "context-free syntax" ws;
-
-void 
-SUGAR =
-   "sugar" !Letter_Or_Digit ws;
    
 
 //-------------------------------------------------------------------------
@@ -1055,6 +995,8 @@ Float_Literal
    / "false" !Letter_Or_Digit
    / "null" !Letter_Or_Digit
    ) ws;
+
+
 
 
 void Integer_Literal =  ( Hex_Numeral
@@ -1349,6 +1291,9 @@ void ONE_OR_MORE =
 
 void OPTIONAL =
    '?' ws;   
+
+void HTAG =
+  '#' ws;
 
 
 //-------------------------------------------------------------------------
