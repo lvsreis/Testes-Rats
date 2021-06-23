@@ -1,5 +1,4 @@
 import parsers.rats.java.*;
-import java.javarats;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -10,13 +9,14 @@ import xtc.parser.Result;
 import java.util.Scanner;
 import java.util.Collections;
 
-public class RunJava extends CSVTable implements Runner {
- 	
- 	public RunJava(){};
+public class RunJava implements Runner {
+ 	CSVTable table;
+ 	public RunJava(){
+		table= new CSVTable();
+ 	}
 
 	@Override
-	public void Run(List<File> lista)  {
-
+	public void Run(List<File> lista) throws IOException {
 		long beginTime, endTime, auxTimeMedicao = 0;
 		Result r;
 		FileReader file;
@@ -33,7 +33,7 @@ public class RunJava extends CSVTable implements Runner {
 			endTime = System.currentTimeMillis();
 			auxTimeMedicao += (endTime - beginTime);	
 		}
-		AddLine("java", (String)auxTimeMedicao);
+		table.addLi("java", auxTimeMedicao);
 	}
 
 }

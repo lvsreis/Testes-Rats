@@ -33,7 +33,7 @@ public class RunXml extends Escrita implements Runner {
 			endTime = System.currentTimeMillis();
 			auxTimeMedicao += (endTime - beginTime);	
 		}
-		AddLine("xml", auxTimeMedicao);
+		table.addLi("xml", auxTimeMedicao);
 	}
 
 }

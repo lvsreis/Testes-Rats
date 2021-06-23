@@ -1,4 +1,4 @@
-import ratsParsers.closure_xml.closure_xml;
+import parsers.rats.closure_xml.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -33,7 +33,7 @@ public class RunClosure_Xml extends CSVTable implements Runner {
 			endTime = System.currentTimeMillis();
 			auxTimeMedicao += (endTime - beginTime);	
 		}
-		AddLine("closure_xml", (String)auxTimeMedicao);
+		table.addLi("closure_xml", (String)auxTimeMedicao);
 	}
 
 }

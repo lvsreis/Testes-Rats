@@ -1,5 +1,4 @@
-//import java.javarats;
-import java.javarats;
+import parsers.rats.java.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -34,7 +33,7 @@ public class RunJava implements Runner {
 			endTime = System.currentTimeMillis();
 			auxTimeMedicao += (endTime - beginTime);	
 		}
-		table.AddLine("java", auxTimeMedicao);
+		table.addLi("java", auxTimeMedicao);
 	}
 
 }

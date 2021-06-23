@@ -1,4 +1,4 @@
-module xml;
+module parsers.rats.xml.xml;
 
 
 public void Document = Prologue Element Epilogue;

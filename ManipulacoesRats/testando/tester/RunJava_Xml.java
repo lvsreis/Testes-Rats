@@ -33,7 +33,7 @@ public class RunJava_Xml extends CSVTable implements Runner {
 			endTime = System.currentTimeMillis();
 			auxTimeMedicao += (endTime - beginTime);	
 		}
-		AddLine("java_xml", (String)auxTimeMedicao);
+		table.addLi("java_xml", (String)auxTimeMedicao);
 	}
 
 }

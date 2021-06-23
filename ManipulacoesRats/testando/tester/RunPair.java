@@ -1,4 +1,4 @@
-import ratsParsers.pair.pair;
+import parsers.rats.pair.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -33,7 +33,7 @@ public class RunPair extends CSVTable implements Runner {
 			endTime = System.currentTimeMillis();
 			auxTimeMedicao += (endTime - beginTime);	
 		}
-		AddLine("pair", (String)auxTimeMedicao);
+		table.addLi("pair", (String)auxTimeMedicao);
 	}
 
 }

@@ -1,4 +1,4 @@
-import ratsParsers.pair_xml.pair_xml;
+import parsers.rats.pair_xml.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -33,7 +33,7 @@ public class RunPair_Xml extends CSVTable implements Runner {
 			endTime = System.currentTimeMillis();
 			auxTimeMedicao += (endTime - beginTime);	
 		}
-		AddLine("pair_xml", (String)auxTimeMedicao);
+		table.addLi("pair_xml", (String)auxTimeMedicao);
 	}
 
 }

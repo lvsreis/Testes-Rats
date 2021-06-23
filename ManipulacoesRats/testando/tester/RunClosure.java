@@ -1,4 +1,4 @@
-import ratsParsers.closure.closure;
+import parsers.rats.closure.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -32,7 +32,7 @@ public class RunClosure extends CSVTable implements Runner {
 			endTime = System.currentTimeMillis();
 			auxTimeMedicao += (endTime - beginTime);	
 		}
-		AddLine("closure", (String)auxTimeMedicao);
+		table.addLi("closure", (String)auxTimeMedicao);
 	}
 
 }

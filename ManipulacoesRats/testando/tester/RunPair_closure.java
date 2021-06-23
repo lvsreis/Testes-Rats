@@ -1,4 +1,4 @@
-import ratsParsers.pair_closure.pair_closure;
+import parsers.rats.pair_closure.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -33,7 +33,7 @@ public class RunPair_Closure extends Escrita implements Runner {
 			endTime = System.currentTimeMillis();
 			auxTimeMedicao += (endTime - beginTime);	
 		}
-		AddLine("pair_closure", (String)auxTimeMedicao);
+		table.addLi("pair_closure", (String)auxTimeMedicao);
 	}
 
 }
