@@ -1,3 +1,4 @@
+package tester;
 import parsers.rats.closure.*;
 import java.util.List;
 import java.util.ArrayList;
@@ -9,12 +10,13 @@ import xtc.parser.Result;
 import java.util.Scanner;
 import java.util.Collections;
 
-public class RunClosure extends CSVTable implements Runner {
- 	
- 	public RunClosure(){};
-
+public class RunClosure implements Runner {
+	private CSVTable table;
+	public RunClosure(){
+		table = new CSVTable();
+	}
 	@Override
-	public void Run(List<File> lista) {
+	public void Run(List<File> lista) throws IOException{
 
 		long beginTime, endTime, auxTimeMedicao = 0;
 		Result r;
@@ -32,7 +34,7 @@ public class RunClosure extends CSVTable implements Runner {
 			endTime = System.currentTimeMillis();
 			auxTimeMedicao += (endTime - beginTime);	
 		}
-		table.addLi("closure", (String)auxTimeMedicao);
+		table.addLi("closure", ""+auxTimeMedicao);
 	}
 
 }

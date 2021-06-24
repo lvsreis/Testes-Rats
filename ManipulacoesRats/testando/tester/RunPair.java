@@ -1,3 +1,4 @@
+package tester;
 import parsers.rats.pair.*;
 import java.util.List;
 import java.util.ArrayList;
@@ -8,14 +9,16 @@ import java.io.FileReader;
 import xtc.parser.Result;
 import java.util.Scanner;
 import java.util.Collections;
-import ManipulacoesRats.RatsParsers.closure;
 
-public class RunPair extends CSVTable implements Runner {
- 	
- 	public RunPair(){};
+public class RunPair  implements Runner {
+	
+	private CSVTable table;
+	public RunPair(){
+		table = new CSVTable();
+	}
 
 	@Override
-	public void Run (List<File> lista) {
+	public void Run (List<File> lista) throws IOException {
 
 		long beginTime, endTime, auxTimeMedicao = 0;
 		Result r;
@@ -33,7 +36,7 @@ public class RunPair extends CSVTable implements Runner {
 			endTime = System.currentTimeMillis();
 			auxTimeMedicao += (endTime - beginTime);	
 		}
-		table.addLi("pair", (String)auxTimeMedicao);
+		table.addLi("pair", ""+auxTimeMedicao);
 	}
 
 }

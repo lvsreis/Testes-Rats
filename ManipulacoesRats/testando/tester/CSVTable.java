@@ -1,10 +1,11 @@
+package tester;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 //criar main e brincar de criar tabela
 
-public class CSVTable { //ArrayList de ArrayList de strings
+public final class CSVTable { //ArrayList de ArrayList de strings
 
   private ArrayList<ArrayList<Object>> tabela;
   private char sep;
@@ -79,39 +80,6 @@ public class CSVTable { //ArrayList de ArrayList de strings
       e.printStackTrace();
     }
   }
-  /*public static void main(String[] args) {
-    String path = "../testando/brincando.csv";
-    Scanner teclado = new Scanner(System.in);
-
-    CSVTable tabela = new CSVTable();
-
-    tabela.addLine(2);
-    tabela.addToLine(0, "brincando");
-    tabela.addToLine(0, 40);
-    tabela.addLine(2);
-    tabela.addToLine(1, "de");
-    tabela.addToLine(1, 20);
-    tabela.addLine(2);
-
-    tabela.addToLine(2, "criar");
-    tabela.addToLine(2, 450);
-    tabela.addLine(2);
-    tabela.addToLine(3, "tabela");
-    tabela.addToLine(3, 750); 
-    tabela.addLine(2);
-		tabela.addLine(2);
-		tabela.addLine(2);
-		tabela.addLine(2);
-		System.out.println("Tam: " + tabela.length);
-
-    System.out.println("Digite uma linha");
-		int linha = teclado.nextInt();
-
-		System.out.println("Digite uma coluna");
-		int coluna = teclado.nextInt();
-
-		tabela.addToLine(linha, coluna, 45);
-
-    tabela.csvToFile(path); //Chamar função de arquivo CSV
-  }*/
+  //concatena 2 tabelas
+  
 }

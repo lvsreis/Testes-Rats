@@ -1,3 +1,4 @@
+package tester;
 import parsers.rats.java.*;
 import java.util.List;
 import java.util.ArrayList;
@@ -9,14 +10,14 @@ import xtc.parser.Result;
 import java.util.Scanner;
 import java.util.Collections;
 
-public class RunJava implements Runner {
- 	CSVTable table;
- 	public RunJava(){
-		table= new CSVTable();
- 	}
+public class RunJava implements Runner  {
+	CSVTable table;
+	public RunJava(CSVTable table){
+		this.table=table; 
+	}
 
 	@Override
-	public void Run(List<File> lista) throws IOException {
+	public void run(List<File> lista) throws IOException {
 		long beginTime, endTime, auxTimeMedicao = 0;
 		Result r;
 		FileReader file;
@@ -33,7 +34,8 @@ public class RunJava implements Runner {
 			endTime = System.currentTimeMillis();
 			auxTimeMedicao += (endTime - beginTime);	
 		}
-		table.addLi("java", auxTimeMedicao);
-	}
+		table.addLi("java",""+ auxTimeMedicao);
 
+	}
+	
 }

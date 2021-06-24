@@ -15,7 +15,7 @@ compile: gen
 DIR=""
 
 run: compile
-	java -cp .;./libs/rats.jar ./tester/Main $(DIR)
+	java -cp .;./libs/rats.jar tester.Main $(DIR)
 
 
 clean:

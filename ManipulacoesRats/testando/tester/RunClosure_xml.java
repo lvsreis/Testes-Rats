@@ -1,3 +1,4 @@
+package tester;
 import parsers.rats.closure_xml.*;
 import java.util.List;
 import java.util.ArrayList;
@@ -10,12 +11,14 @@ import java.util.Scanner;
 import java.util.Collections;
 
 
-public class RunClosure_Xml extends CSVTable implements Runner {
-
-	public RunClosure_Xml(){};
+public class RunClosure_xml implements Runner {
+	private CSVTable table;
+	public RunClosure_xml(){
+		table = new CSVTable();
+	}
 
 	@Override
-	public void Run (List<File> lista) {
+	public void Run (List<File> lista) throws IOException{
 
 		long beginTime, endTime, auxTimeMedicao = 0;
 		Result r;
@@ -33,7 +36,7 @@ public class RunClosure_Xml extends CSVTable implements Runner {
 			endTime = System.currentTimeMillis();
 			auxTimeMedicao += (endTime - beginTime);	
 		}
-		table.addLi("closure_xml", (String)auxTimeMedicao);
+		table.addLi("closure_xml", ""+auxTimeMedicao);
 	}
 
 }

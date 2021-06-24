@@ -1,3 +1,4 @@
+package tester;
 import parsers.rats.pair_closure_xml.*;
 import java.util.List;
 import java.util.ArrayList;
@@ -8,14 +9,16 @@ import java.io.FileReader;
 import xtc.parser.Result;
 import java.util.Scanner;
 import java.util.Collections;
-import ManipulacoesRats.RatsParsers.closure;
 
-public class RunPair_Closure_Xml extends CSVTable implements Runner {
- 	
- 	public RunPair_Closure_Xml(){};
+public class RunPair_Closure_Xml  implements Runner {
+	
+	private CSVTable table;
+	public RunPair_Closure_Xml(){
+		table = new CSVTable();
+	}
 
 	@Override
-	public void Run (List<File> lista) {
+	public void Run (List<File> lista) throws IOException{
 
 		long beginTime, endTime, auxTimeMedicao = 0;
 		Result r;
@@ -33,7 +36,7 @@ public class RunPair_Closure_Xml extends CSVTable implements Runner {
 			endTime = System.currentTimeMillis();
 			auxTimeMedicao += (endTime - beginTime);	
 		}
-		table.addLi("pair_closure_xml", (String)auxTimeMedicao);
+		table.addLi("pair_closure_xml", ""+auxTimeMedicao);
 	}
 
 }
