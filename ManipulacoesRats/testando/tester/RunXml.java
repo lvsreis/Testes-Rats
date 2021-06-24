@@ -1,4 +1,4 @@
-import ratsParsers.xml.xml;
+import parsers.rats.xml.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;

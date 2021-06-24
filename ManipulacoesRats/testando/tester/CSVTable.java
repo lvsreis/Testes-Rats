@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 //criar main e brincar de criar tabela
 
-class CSVTable { //ArrayList de ArrayList de strings
+public class CSVTable { //ArrayList de ArrayList de strings
 
   private ArrayList<ArrayList<Object>> tabela;
   private char sep;

@@ -8,11 +8,11 @@ import java.io.FileReader;
 import xtc.parser.Result;
 import java.util.Scanner;
 import java.util.Collections;
-//import ManipulacoesRats.RatsParsers.closure;
+
 
 public class RunClosure_Xml extends CSVTable implements Runner {
- 	
- 	public RunClosure_Xml(){};
+
+	public RunClosure_Xml(){};
 
 	@Override
 	public void Run (List<File> lista) {

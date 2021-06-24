@@ -10,7 +10,7 @@ gen: ./parsers/rats/java/javarats.rats ./parsers/rats/closure/closure.rats ./par
 	java -jar ./libs/rats.jar -out ./parsers/rats/xml/ ./parsers/rats/xml/xml.rats
 
 compile: gen
-	javac -cp .;./libs/rats.jar ./tester/Main.java 
+	javac -cp .;./libs/rats.jar ./tester/Main.java
 
 DIR=""
 

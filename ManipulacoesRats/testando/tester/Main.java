@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Scanner;
 import xtc.parser.Result;
-import CSVTable;
 
 public class Main {
 
@@ -42,41 +41,41 @@ public class Main {
         //Fname = aux.substring(index + 1, aux.length());
         switch (file.getName()) {
           case "closure":
-          RunClosure a = new RunClosure();
-          a.Run(vectorToList(file.listFiles()));
-          break;
+            RunClosure a = new RunClosure();
+            a.Run(vectorToList(file.listFiles()));
+            break;
           case "closure_xml":
-          RunClosure_Xml b = new RunClosure_Xml();
-          b.Run(vectorToList(file.listFiles()));
-          break;
+            RunClosure_Xml b = new RunClosure_Xml();
+            b.Run(vectorToList(file.listFiles()));
+            break;
           case "java_xml":
-          RunJava c = new RunJava();
-          c.Run(vectorToList(file.listFiles()));
-          break;
+            RunJava c = new RunJava();
+            c.Run(vectorToList(file.listFiles()));
+            break;
           case "pair":
-          RunPair d = new RunPair();
-          d.Run(vectorToList(file.listFiles()));
-          break;
+            RunPair d = new RunPair();
+            d.Run(vectorToList(file.listFiles()));
+            break;
           case "pair_closure":
-          RunPair_Closure e = new RunPair_Closure();
-          e.Run(vectorToList(file.listFiles()));
-          break;
+            RunPair_Closure e = new RunPair_Closure();
+            e.Run(vectorToList(file.listFiles()));
+            break;
           case "pair_closure_xml":
-          RunPair_Closure_Xml ff = new RunPair_Closure_Xml();
-          ff.Run(vectorToList(file.listFiles()));
-          break;
+            RunPair_Closure_Xml ff = new RunPair_Closure_Xml();
+            ff.Run(vectorToList(file.listFiles()));
+            break;
           case "pair_xml":
-          RunPair_Xml g = new RunPair_Xml();
-          g.Run(vectorToList(file.listFiles()));
-          break;
+            RunPair_Xml g = new RunPair_Xml();
+            g.Run(vectorToList(file.listFiles()));
+            break;
           case "xml":
-          RunXml h = new RunXml();
-          h.Run(vectorToList(file.listFiles()));
-          break;
+            RunXml h = new RunXml();
+            h.Run(vectorToList(file.listFiles()));
+            break;
           case "java":
-          RunJava j = new RunJava();
-          j.Run(vectorToList(file.listFiles()));
-          break;
+            RunJava j = new RunJava();
+            j.Run(vectorToList(file.listFiles()));
+            break;
           default:
         }
 
