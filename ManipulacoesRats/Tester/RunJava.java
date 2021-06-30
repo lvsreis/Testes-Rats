@@ -18,7 +18,8 @@ public class RunJava implements Runner {
   public RunJava(CSVTable table) {
     this.table = table;
   }
-
+  
+  @Override
   public void Run(List<File> lista) throws IOException {
     long beginTime, endTime, auxTimeMedicao = 0;
     Result r;
