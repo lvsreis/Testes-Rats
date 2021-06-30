@@ -1,9 +1,31 @@
 import java.io.FileReader;
+import java.util.*;
 import xtc.parser.Result;
 
+public class Main {
 
-public class Main { 
-  public boolean Rats() throws Exception {
+  public static Map<Char, Object> variables;
+
+  public static void main(String args[]) throws Exception {
+    if (!Rats()) {
+      java.lang.System.exit(1);
+    }
+    variables = new HashMap<Char, Object>();
+
+    FileReader f = new FileReader("input.txt");
+    String str;
+    while ((str = f.readLine()) != null) {
+      str = str.trim();
+      if (!variables.containsKey(str.charAt(0)) && str.charAt(1) != "=") {
+        str = str.substring(2);
+        variables.put(str.charAt(0), value(str));
+      } else {
+        system.out.println("\n" + value(str));
+      }
+    }
+  }
+
+  public static boolean Rats() throws Exception {
     FileReader file = new FileReader("input.txt");
     calculadora parser = new calculadora(file, "input");
     long beginTime = System.currentTimeMillis();
@@ -19,40 +41,33 @@ public class Main {
     }
   }
 
+  public static int value(String str) {
+    int valor = 0;
 
-  public static void main(String args[]) throws Exception {
-    if (!rats()) {
-      exit(1);
-    }  
-    Map<String,object> variables = new HashMap<String,object>();
-  }
-
-  public string Stmt() {
-    boolean v = true;
-    Filereader f = new FileReader("input.txt");
-    String str;
-    while ((str = f.readLine()) != null) {
-      str = str.trim();
-        if (!variables.containsKey(str.charAt(0)))
-          str=str.substring(2);
-          variables.set(charAt(0),value(str));
-        }else
-        {
-          
+    String plus_str[] = str.split("+");
+    for (String r : plus_str) {
+      if (r.contains("*")) {
+        String aux[] = r.split("*");
+        for (String s : aux) {
+          if (!s.charAt(0).isisDigit()) {
+            valor *= Integer.parseInt(variables.get(s));
+            s = "";
+          } else {
+            valor *= Integer.parseInt(s);
+            s = "";
+          }
         }
       }
     }
-    public int value(string str) {
-      int aux=0;
-      int auxi=0;
-      
-      for(int i=0;i<str.length();i++)
-      {
-          if(str.charAt(i).isDigit())
-            aux = 
+    for (String r : plus_str) {
+      if (!s.charAt(0).isisDigit()) {
+        valor += Integer.parseInt(variables.get(s));
+        s = "";
+      } else {
+        valor += Integer.parseInt(s);
+        s = "";
       }
-    }
-    public string digito(string str){
-      
+      return valor;
     }
   }
+}

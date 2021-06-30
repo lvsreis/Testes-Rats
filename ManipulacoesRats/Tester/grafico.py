@@ -22,7 +22,7 @@ xm = 0
 cont = 0
 
 
-dataset = open('../reports/Saida.csv', 'r')
+dataset = open('./reports/Saida.csv', 'r')
 dicionario = {"chave": 0}
 dicionario.clear()
 for line in dataset:
