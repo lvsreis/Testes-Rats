@@ -1,65 +1,84 @@
+package tester;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-class CSVTable { //ArrayList de ArrayList de strings
 
-	private ArrayList<ArrayList<Object>> tabela; 
-	private char sep;
+public final class CSVTable { //ArrayList de ArrayList de strings
 
-	public CSVTable() {
-		sep = ';';
-		tabela = new ArrayList<ArrayList<Object> >(); 
-	}
+  private ArrayList<ArrayList<Object>> tabela;
+  private char sep;
 
-	public CSVTable(char s) {
-		this();
-		sep = s;
-		
-	}
+  public CSVTable() {
+    sep = ';';
+    tabela = new ArrayList<ArrayList<Object>>();
+  }
 
-	//Método AddLine = adiciona linha em branco sem nada na tabela
-	public void AddLine(String nome, long tempo) {
-		
-		ArrayList<Object> l = new ArrayList<Object>(); 
-		tabela.add(l);
-		
-		int tamTabela = tabela.size();
-		
-		AddToLine(tamTabela, nome, tempo);
-	}
+  public CSVTable(char s) {
+    this();
+    sep = s;
+  }
 
-	//AddToLine = Add uma coluna no final da linha; recebe como parametro a linha que vc
-	//quer colocar 
-	public void AddToLine(int linha, String nome, long tempo) {
+  //Método AddLine = adiciona linha em branco sem nada na tabela
+  public void addLine() {
+    ArrayList<Object> l = new ArrayList<Object>();
+    tabela.add(l);
+  }
 
-		tabela.get(linha).add(nome);
-		tabela.get(linha).add(tempo);
-	}
+  //___________________________________________
 
-	//getLine(//Recebe um inteiro)
-	public ArrayList<Object> getLine(int linha) {
-		return tabela.get(linha);
-	}
-	
-	//getAt(//Recebe dois inteiros)Linha e coluna
-	public String getAt(int linha, int coluna) {
-		return tabela.get(linha).get(coluna);
-	}
+  public void addLine(int size) {
+    ArrayList<Object> l = new ArrayList<Object>(size);
+    tabela.add(l);
+  }
 
-	public void csvToFile() {
-		File f = new File("../reports/saida.csv");
-		
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter(f.getPath(), true))) {
-			String aux = "";		
-			
-			for(int i = 0; i < tabela.size(); i++) {
-						aux = getAt(i, 0) + sep + getAt(i, 1);
-				}
-				bw.write(aux);
-				bw.newLine();
-				
-			} catch (IOException e) {
-					e.printStackTrace();
-				}
-	}
-	
+  //____________________________________________
+  //AddToLine = Add uma coluna no final da linha; recebe como parametro a linha que vc
+  //quer colocar
+  public void addToLine(int line, Object value) {
+    tabela.get(line).add(value);
+  }
+
+  public void addLi(Object um, Object dois) {
+    ArrayList<Object> l = new ArrayList<Object>();
+    l.add(um);
+    l.add(dois);
+    tabela.add(l);
+  }
+
+  //getLine(//Recebe um inteiro)
+  public ArrayList<Object> getLine(int linha) {
+    return tabela.get(linha);
+  }
+
+  //getAt(//Recebe dois inteiros)Linha e coluna
+  public Object getAt(int linha, int coluna) { //Usar somente a linha ??????
+    return tabela.get(linha).get(coluna);
+  }
+
+  public void csvToFile(String path) {
+    File f = new File(path);
+
+    try (
+      BufferedWriter bw = new BufferedWriter(new FileWriter(f.getPath(), false))
+      ) {
+      String aux = "";
+
+      for (ArrayList<Object> l : tabela) {
+        aux = "";
+        for (Object o : l) {
+          aux = aux + o.toString() + sep;
+        }
+
+        bw.write(aux);
+        bw.newLine();
+      }
+
+      bw.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+  //concatena 2 tabelas
+  
 }

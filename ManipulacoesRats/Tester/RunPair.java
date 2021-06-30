@@ -1,39 +1,46 @@
-import ratsParsers.pair.pair;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.LinkedList;
+package tester;
+
 import java.io.*;
-import java.util.Queue;
 import java.io.FileReader;
-import xtc.parser.Result;
-import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.Collections;
-import ManipulacoesRats.RatsParsers.closure;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Scanner;
+import parsers.rats.pair.*;
+import xtc.parser.Result;
 
-public class RunPair extends CSVTable implements Runner {
- 	
- 	public RunPair(){};
+public class RunPair implements Runner {
 
-	@Override
-	public void Run (List<File> lista) {
+  CSVTable table;
 
-		long beginTime, endTime, auxTimeMedicao = 0;
-		Result r;
-		FileReader file;
-		String pth;
-		int j = 0;
+  public RunPair(CSVTable table) {
+    this.table = table;
+  }
 
-		Collections.shuffle(lista);
-		for (int i = 0; i < lista.size(); i++) {
-			pth = (lista.get(i)).getPath();
-			file = new FileReader(pth);
-			pair parser = new pair(file, pth);
-			beginTime = System.currentTimeMillis();
-			r = parser.pcompilation_unit(0);
-			endTime = System.currentTimeMillis();
-			auxTimeMedicao += (endTime - beginTime);	
-		}
-		AddLine("pair", (String)auxTimeMedicao);
-	}
+  @Override
+  public void Run(List<File> lista) throws IOException {
+    long beginTime, endTime, auxTimeMedicao = 0;
+    Result r;
+    FileReader file;
+    String pth;
+    int j = 0;
 
+    Collections.shuffle(lista);
+    for (int i = 0; i < lista.size(); i++) {
+      pth = (lista.get(i)).getPath();
+      file = new FileReader(pth);
+      pair parser = new pair(file, pth);
+      beginTime = System.currentTimeMillis();
+      r = parser.pcompilation_unit(0);
+      endTime = System.currentTimeMillis();
+      auxTimeMedicao += (endTime - beginTime);
+    }
+    table.addLi("pair", "" + auxTimeMedicao);
+  }
+
+  public CSVTable getTable() {
+    return this.table;
+  }
 }
