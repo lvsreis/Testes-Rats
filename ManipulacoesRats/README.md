@@ -31,3 +31,4 @@ make run
 
 java -jar target\ControleDeAcademia-1.0-SNAPSHOT-jar-with-dependencies.jar
 ```
+
