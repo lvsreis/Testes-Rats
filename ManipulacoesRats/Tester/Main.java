@@ -20,9 +20,8 @@ public class Main {
     List<File> lista = new LinkedList();
     List<File> listaAux = new LinkedList();
 
-    File f = new File(args[0]);
-
-    //String Fname;
+    String caminho = "../parsers/rats";
+    File f = new File(caminho);
 
     File[] vet = f.listFiles();
 
