@@ -23,8 +23,6 @@ cont = 0
 
 
 dataset = open('./reports/Saida.csv', 'r')
-dicionario = {"chave": 0}
-dicionario.clear()
 for line in dataset:
     line = line.strip()  # Tira o \n no final da linha
     x, y, z = line.split(';')  # Quebra a linha com o marcador ;
@@ -48,6 +46,7 @@ for line in dataset:
         px += int(y)
     elif x == xml:
         xm += int(y)
+
 dataset.close()
 X = []
 Y = []
@@ -73,7 +72,7 @@ Y.append(xm/cont)
 
 plt.bar(X, Y)
 
-plt.title('Tempo de Execução')
+plt.title('Tempo de Execução (ms)')
 plt.xlabel('Nome arquivo')
 plt.ylabel('Tempo')
 

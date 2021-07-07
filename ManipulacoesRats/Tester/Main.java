@@ -12,7 +12,7 @@ import xtc.parser.Result;
 
 public class Main {
 
-  static final int X = 5;
+  static final int X = 8;
 
   public static void main(String[] args) throws IOException {
     CSVTable tabela = new CSVTable();

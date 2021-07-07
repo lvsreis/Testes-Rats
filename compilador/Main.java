@@ -1,22 +1,24 @@
-import java.io.FileReader;
+import java.io.*;
 import java.util.*;
 import xtc.parser.Result;
 
 public class Main {
 
-  public static Map<Char, Object> variables;
+  public static Map<Character, Object> variables;
 
   public static void main(String args[]) throws Exception {
     if (!Rats()) {
       java.lang.System.exit(1);
     }
-    variables = new HashMap<Char, Object>();
+    variables = new HashMap<Character, Object>();
 
     FileReader f = new FileReader("input.txt");
+    BufferedReader br=new BufferedReader(f);
     String str;
-    while ((str = f.readLine()) != null) {
+    while ((str = br.readLine()) != null) {
       str = str.trim();
-      if (!variables.containsKey(str.charAt(0)) && str.charAt(1) != "=") {
+      if (!variables.containsKey(str.charAt(0)) && str.charAt(1) != "=") 
+      {
         str = str.substring(2);
         variables.put(str.charAt(0), value(str));
       } else {
@@ -47,6 +49,7 @@ public class Main {
     String plus_str[] = str.split("+");
     for (String r : plus_str) {
       if (r.contains("*")) {
+        valor=1;
         String aux[] = r.split("*");
         for (String s : aux) {
           if (!s.charAt(0).isisDigit()) {
