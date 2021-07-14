@@ -46,6 +46,14 @@ public final class CSVTable { //ArrayList de ArrayList de strings
     tabela.add(l);
   }
 
+  public void addLin(Object um, Object dois, Object tres) {
+    ArrayList<Object> l = new ArrayList<Object>();
+    l.add(um);
+    l.add(dois);
+    l.add(tres);
+    tabela.add(l);
+  }
+
   //getLine(//Recebe um inteiro)
   public ArrayList<Object> getLine(int linha) {
     return tabela.get(linha);

@@ -14,6 +14,43 @@ public class Main {
 
   static final int X = 8;
 
+  public static CSVTable coletarDiretorios(File list, CSVTable tabela) {
+    File inst[];
+    Queue<File> q;
+    
+    inst = list.listFiles();
+
+    for(File f : inst)
+    {
+      if(f.isDirectory())
+      {
+        q.add(f);
+      }
+    }
+
+    File aux;
+
+    try {
+
+			while (!q.isEmpty()) {
+				aux = q.remove();
+        
+        RunJava j = new RunJava(tabela);
+            j.Run(aux);
+            tabela = j.getTable();
+			}
+
+		}
+
+		catch (Exception e) {
+			System.out.println("Deu merda " + e.getMessage());
+			e.printStackTrace();
+		}
+
+    return tabela;
+
+  }
+
   public static void main(String[] args) throws IOException {
     CSVTable tabela = new CSVTable();
 
@@ -72,9 +109,7 @@ public class Main {
             h.Run(vectorToList(file.listFiles()));
             break;
           case "java":
-            RunJava j = new RunJava(tabela);
-            j.Run(vectorToList(file.listFiles()));
-            tabela = j.getTable();
+            tabela = coletarDiretorios(file, tabela);
             break;
           default:
         }
