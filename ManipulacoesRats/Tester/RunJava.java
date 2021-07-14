@@ -71,7 +71,7 @@ public class RunJava {
 
       auxTimeMedicao += (endTime - beginTime);
     }
-    table.addLin("java", "" + auxTimeMedicao, name);
+    table.addLi(name, "" + auxTimeMedicao);
   }
 
   public CSVTable getTable() {

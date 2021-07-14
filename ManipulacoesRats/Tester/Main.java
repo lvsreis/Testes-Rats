@@ -104,8 +104,6 @@ public class Main {
             h.Run(vectorToList(file.listFiles()));
             break;
           case "java":
-            RunJava j = new RunJava(tabela);
-            j.Run(file);
             coletarDiretorios(file, tabela);
             break;
           default:
