@@ -17,7 +17,7 @@ java_X = []
 cont = 0
 
 
-dataset = open('../reports/Saida.csv', 'r')
+dataset = open('./reports/Saida.csv', 'r')
 
 for line in dataset:
     line = line.strip()  # Tira o \n no final da linha
