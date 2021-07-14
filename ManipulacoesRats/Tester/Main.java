@@ -12,18 +12,16 @@ import xtc.parser.Result;
 
 public class Main {
 
-  static final int X = 8;
+  static final int X = 1;
 
-  public static CSVTable coletarDiretorios(File list, CSVTable tabela) {
+  public static void coletarDiretorios(File java, CSVTable tabela) {
     File inst[];
-    Queue<File> q;
-    
-    inst = list.listFiles();
+    Queue<File> q = new LinkedList();
 
-    for(File f : inst)
-    {
-      if(f.isDirectory())
-      {
+    inst = java.listFiles();
+
+    for (File f : inst) {
+      if (f.isDirectory()) {
         q.add(f);
       }
     }
@@ -31,24 +29,16 @@ public class Main {
     File aux;
 
     try {
-
-			while (!q.isEmpty()) {
-				aux = q.remove();
-        
+      while (!q.isEmpty()) {
+        aux = q.remove();
         RunJava j = new RunJava(tabela);
-            j.Run(aux);
-            tabela = j.getTable();
-			}
-
-		}
-
-		catch (Exception e) {
-			System.out.println("Deu merda " + e.getMessage());
-			e.printStackTrace();
-		}
-
-    return tabela;
-
+        j.Run(aux);
+      }
+    } catch (Exception e) {
+      System.out.println("Deu merda " + e.getMessage());
+      e.printStackTrace();
+    }
+    //  return tabela;
   }
 
   public static void main(String[] args) throws IOException {
@@ -57,15 +47,20 @@ public class Main {
     List<File> lista = new LinkedList();
     List<File> listaAux = new LinkedList();
 
-    String caminho = "../parsers/rats";
+    String caminho = "./instancias";
     File f = new File(caminho);
 
-    File[] vet = f.listFiles();
+    File vet[] = f.listFiles();
 
-    for (int i = 0; i < vet.length; i++) {
-      if (vet[i].isDirectory()) {
-        lista.add(vet[i]);
+    try {
+      for (int i = 0; i < f.listFiles().length; i++) {
+        if (vet[i].isDirectory()) {
+          lista.add(vet[i]);
+        }
       }
+    } catch (Exception e) {
+      System.out.println("uai : " + e.getMessage());
+      //TODO: handle exception
     }
 
     for (int i = 0; i < X; i++) {
@@ -109,7 +104,9 @@ public class Main {
             h.Run(vectorToList(file.listFiles()));
             break;
           case "java":
-            tabela = coletarDiretorios(file, tabela);
+            RunJava j = new RunJava(tabela);
+            j.Run(file);
+            coletarDiretorios(file, tabela);
             break;
           default:
         }
