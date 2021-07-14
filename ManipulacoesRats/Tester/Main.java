@@ -12,7 +12,7 @@ import xtc.parser.Result;
 
 public class Main {
 
-  static final int X = 1;
+  static final int X = 8;
 
   public static void coletarDiretorios(File java, CSVTable tabela) {
     File inst[];

@@ -43,7 +43,7 @@ for line in dataset:
             Y[7] += int(y)
 
     elif x in java:
-        java[index(x)] += y
+        java_value[java.index(x)] += int(y)
     else:
         java.append(x)
         java_value.append(int(y))
