@@ -2,17 +2,14 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import numpy as np
 
-
+# Caso adicione/remova um parser, adicionar/remover o nome referente nesta lista
 linguagem = ["closure", "closure_xml", "java_xml", "pair", "pair_closure",
              "pair_closure_xml", "pair_xml", "xml"]
 
-X = []
 Y = np.zeros(len(linguagem))
-Ytab = []
 
 java = []
 java_value = []
-java_X = []
 
 cont = 0
 
@@ -24,6 +21,9 @@ for line in dataset:
     x, y, z = line.split(';')  # Quebra a linha com o marcador ;
 
     cont += 1
+
+    # Caso adicione/remova um parser, adicionar/remover o nome
+    # referente nesstes elif's
     if x in linguagem:
         if x == "closure":
             Y[0] += int(y)
@@ -42,6 +42,7 @@ for line in dataset:
         elif x == "xml":
             Y[7] += int(y)
 
+    # elif para as instancias Java
     elif x in java:
         java_value[java.index(x)] += int(y)
     else:
@@ -52,11 +53,10 @@ dataset.close()
 
 
 for i in range(len(linguagem)):
-    X.append(linguagem[i])
-    Ytab.append(Y[i] / cont)
+    Y[i] /= cont
 
 for j in range(len(java_value)):
-   java_value[j] /= cont
+    java_value[j] /= cont
 
 
 # grafico = plt.subplots(1, 1, figsize=(5, 10))
@@ -83,10 +83,9 @@ for j in range(len(java_value)):
 
 # plt.show()
 
+plt.bar(java, java_value)
 
-plt.bar(X, Y)
-
-plt.title('Tempo de Execução')
+plt.title('Tempo de Execução das Instancias Java')
 plt.xlabel('Nome arquivo')
 plt.ylabel('Tempo')
 
@@ -97,10 +96,9 @@ plt.subplots_adjust(bottom=0.35)
 
 plt.show()
 
+plt.bar(linguagem, Y)
 
-plt.bar(java, java_value)
-
-plt.title('Tempo de Execução')
+plt.title('Tempo de Execução das demais instancias')
 plt.xlabel('Nome arquivo')
 plt.ylabel('Tempo')
 

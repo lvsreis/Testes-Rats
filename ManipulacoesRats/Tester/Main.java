@@ -12,8 +12,9 @@ import xtc.parser.Result;
 
 public class Main {
 
-  static final int X = 8;
+  static final int X = 8; //quantidade de vezes a serem repetidas as mediçoes
 
+  // metodo para separar os programas Java para a analise
   public static void coletarDiretorios(File java, CSVTable tabela) {
     File inst[];
     Queue<File> q = new LinkedList();
@@ -38,7 +39,6 @@ public class Main {
       System.out.println("Deu merda " + e.getMessage());
       e.printStackTrace();
     }
-    //  return tabela;
   }
 
   public static void main(String[] args) throws IOException {
@@ -47,29 +47,27 @@ public class Main {
     List<File> lista = new LinkedList();
     List<File> listaAux = new LinkedList();
 
-    String caminho = "./instancias";
+    String caminho = "./instancias"; //caminho das instancias
     File f = new File(caminho);
 
     File vet[] = f.listFiles();
 
-    try {
+    try { //tenta pegar os diretorios do caminho
       for (int i = 0; i < f.listFiles().length; i++) {
         if (vet[i].isDirectory()) {
           lista.add(vet[i]);
         }
       }
     } catch (Exception e) {
-      System.out.println("uai : " + e.getMessage());
-      //TODO: handle exception
+      System.out.println("uai : " + e.getMessage()); // "uai " puquê nois é minero
     }
 
     for (int i = 0; i < X; i++) {
-      Collections.shuffle(lista);
+      Collections.shuffle(lista); // embralhamento da lista de repositórios #perguntar
 
       for (File file : lista) {
-        //String aux = file.getPath();
-        //int index = aux.lastIndexOf(File.separatorChar, aux.length());
-        //Fname = aux.substring(index + 1, aux.length());
+        // Caso adicione/remova um parser, adicionar/remover o case do diretório
+        // referente neste switch
         switch (file.getName()) {
           case "closure":
             RunClosure a = new RunClosure(tabela);
