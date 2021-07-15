@@ -21,7 +21,12 @@
 # Como rodar o projeto
 **Certifique-se de ter o MinGW instalado**
 
-1. Digite o comando abaixo:
+1. Local de execução
+```
+Abra o diretório ManipulacoesRats
+```
+
+2. Digite o comando abaixo:
 ```
 make run
 ```
@@ -33,32 +38,76 @@ Manipulações Rats foi um programa feito para avaliarmos o tempo de execução 
 onde o dividimos em algumas classes. Essas classes foram utilizadas de modo a deixar o programa
 mais organizado, visando sua melhor compreensão e entendimento. Além disso, foi utilizado alguns conceitos trabalhados na disciplina de Orientação a Objetos, como Interfaces.
 
-Após a execução do programa foi gerado um arquivo de saida no formato CSV contendo os dados do tempo de execução da análise sintática. Posto a isso, foi implementado um código em Python usando uma biblioteca chamada Matplotlib. Essa biblioteca é responsável por gerar um gráfico 
-com os dados do arquivo CSV a fim de facilitar a visualização dos testes feitos.
+Após a execução do programa foi gerado um arquivo de saida no formato CSV contendo os dados do tempo de execução da análise sintática. Posto a isso, foi implementado um código em Python usando uma biblioteca chamada Matplotlib. Essa biblioteca é responsável por gerar um gráfico com os dados do arquivo CSV a fim de facilitar a visualização dos testes feitos.
+
+```
+
+## Organização das pastas
+
+```
+Nesse programa dispusemos de 5 diretórios:
+
+```
+
+• Instancias:
+```
+Diretório onde se encontra todos os arquivos para teste. Dentro desse diretório organizamos e separamos todos os arquivos em diretórios nomeados com o nome do respectivo Parser a ser executado. 
+```
+
+• libs
+```
+Diretório onde se encontra a biblioteca rats.jar(Caso esse diretório esteja vazio, ou não exista, ele deve ser criado e colocado o arquivo dentro do mesmo).
+
+```
+
+• parsers
+
+```
+Esse diretório possui uma pasta rats. Dentro dessa pasta (perguntar a eles sobre o rats)
+Dentro do diretório rats encontra-se os parsers separados por diretórios que possuem os nomes
+relacionados as sintaxes a serem analisadas.
+
+```
+
+• reports
+```
+Diretório onde se encontra a saída de texto(Saida.csv) que contêm os dados obtidos dos testes realizados durante a execução do programa.
+
+```
+
+• Tester
+
+```
+Diretório onde se encontram a classe Main.java e as demais classes implementadas do programa. Nela contém também o código em Python responsável por gerar o gráfico para análise contendo os dados de saída(encontrado em reports/Saida.csv).
 
 ```
 
 ## Classes implementadas
 • Main.java
 ```
-A classe Main.java é a classe principal do programa. É a classe utilizada para rodar o projeto.
-Além disso, é responsável por gerar o arquivo de saída em formato CSV. (Tem que completar mais coisa aqui) 
+A classe Main.java é a classe principal do programa. É a classe utilizada para rodar o projeto. Nela passamos o endereço da pasta instância onde chama o parser(classe Run) específico para cada diretório nesta pasta. 
 
 ```
 
-• ColetarArquivos.java
+• Runner.java
+```
+É uma Interface onde todas as nossas classes Run(RunPair.java, RunXml.java, RunClosure.java,..), com exceção da RunJava.java, foram extendidas.
 
 ```
-A classe ColetarArquivos.java é responsável por coletar todas as pastas e arquivos de instâncias utilizadas para fazer os testes.  
-```
 
-• RunPair.java
+• Run(RunPair.java, RunXml.java, RunClosure.java,...)
 
 ```
-Essa classe é responsável por coletar o tempo de execução dos programas. Após a coleta, é utilizado o método AddLi(), onde passamos o tempo de execução para ser inserido na tabela
+Essas classes são responsáveis por coletar o tempo de verificação da sintaxe dos programas. Após a coleta, é utilizado o método AddLi() (Método da classe CSVTable.java), onde passamos esse tempo de verificação e o nome do diretório para ser inserido na tabela.
+
 ```
 
 • CSVTable.java
 ```
 Classe utilizada por criar a tabela CSV. Nessa classe fazemos a inserção em linha e coluna do nome da linguagem e o tempo de execução, respectivamente. Além do mais, encontramos nessa classe outros métodos que auxiliam na criação/manipulação da tabela CSV.
+
 ```
+
+## Observações
+Algumas alterações  que podem ser feitas no programa estarão comentadas no próprio código
+do projeto.
