@@ -12,7 +12,7 @@ import xtc.parser.Result;
 
 public class Main {
 
-  static final int X = 1;
+  static final int X = 8;
 
   public static void coletarDiretorios(File java, CSVTable tabela) {
     File inst[];
@@ -104,8 +104,6 @@ public class Main {
             h.Run(vectorToList(file.listFiles()));
             break;
           case "java":
-            RunJava j = new RunJava(tabela);
-            j.Run(file);
             coletarDiretorios(file, tabela);
             break;
           default:
